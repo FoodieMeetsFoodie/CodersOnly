@@ -17,6 +17,7 @@ controller.createUser = async (req, res, next) => {
       comment,
       matches,
     });
+    console.log(res.locals.user);
     return next();
   } catch (err) {
     return next({

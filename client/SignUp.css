@@ -1,0 +1,12 @@
+.SignUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.SignUpForm {
+  display: flex;
+  flex-direction: column;
+}

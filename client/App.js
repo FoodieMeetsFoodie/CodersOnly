@@ -1,5 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
+import Login from './Login.js';
 
 //imported stylesheet
 import './style.css';
@@ -14,6 +15,7 @@ const App = () => {
         <Profile/>
         <UpdateProfile/>
       </div>
+      <Login />
     </div>
   );
 };
