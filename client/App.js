@@ -1,14 +1,11 @@
 import React from 'react';
 
-
-
-
 const App = () => {
-  return(
+  return (
     <div>
-    <p>STAR Mole</p>
+      <p>STAR Mole</p>
     </div>
-  )
+  );
 };
 
 export default App;
