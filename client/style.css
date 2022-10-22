@@ -1,0 +1,17 @@
+.profile {
+  border: solid black;
+}
+
+.profile-page {
+  border: solid red;
+}
+
+.profile-image {
+  border: solid blue;
+  text-align:center;
+}
+
+.profile-bio {
+  border: solid blue;
+  text-align:center;
+}
