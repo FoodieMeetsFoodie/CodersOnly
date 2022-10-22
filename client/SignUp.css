@@ -6,7 +6,7 @@
   gap: 10px;
 }
 
-.SignUpField {
+.SignUpForm {
   display: flex;
   flex-direction: column;
 }

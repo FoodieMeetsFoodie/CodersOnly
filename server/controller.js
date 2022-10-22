@@ -3,7 +3,6 @@ const User = require('./userModel');
 const controller = {};
 
 controller.createUser = async (req, res, next) => {
-  console.log(req.body);
   try {
     const { username, password, age, location, cuisine, comment, matches } =
       req.body;
@@ -18,6 +17,7 @@ controller.createUser = async (req, res, next) => {
       comment,
       matches,
     });
+    console.log(res.locals.user);
     return next();
   } catch (err) {
     return next({
