@@ -30,6 +30,7 @@ controller.createUser = async (req, res, next) => {
   }
 };
 
+// change functionality to be for all instances of matches with value of not 'no' (or 'yes' and null)
 controller.getUser = async (req, res, next) => {
   try {
     const { username } = req.params;
@@ -62,5 +63,26 @@ controller.getUser = async (req, res, next) => {
 //     });
 //   }
 // };
+
+controller.verifyUser = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    console.log(req.body);
+    const found = await User.findOne({
+      username: username,
+      password: password,
+    });
+    found ? (res.locals.userExists = true) : (res.locals.userExists = false);
+    return next();
+  } catch (err) {
+    return next({
+      log: `controller.js: ERROR: ${err}`,
+      status: 400,
+      message: {
+        err: 'An error occurred in controller.verifyUser. Check server logs for more details',
+      },
+    });
+  }
+};
 
 module.exports = controller;
