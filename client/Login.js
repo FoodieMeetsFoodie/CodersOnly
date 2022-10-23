@@ -48,7 +48,7 @@ const Login = () => {
           id='password'
         ></input>
         {/* created route to feed...will need to make a conditional route so it will only route when verified user logs in*/}
-        <Link to='/Feed'>
+        <Link to='/HomePage'>
           <button onClick={loginHandler}>Login</button>
         </Link>
         <Link to='/SignUp'>

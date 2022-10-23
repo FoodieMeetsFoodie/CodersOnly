@@ -63,6 +63,7 @@ const SignUp = () => {
         <label>Bio:</label>
         <input name='comment' type='text' placeholder='bio'></input>
         {/* linking submit button back to login page */}
+        {/* this breaks for some reason when we uncomment the link component :( */}
         {/* <Link to= '/Login'> */}
           <button className='submitPost' type='submit'>
             Submit
