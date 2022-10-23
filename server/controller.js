@@ -85,4 +85,22 @@ controller.verifyUser = async (req, res, next) => {
   }
 };
 
+//this controller is for fetching all the profiles from our db
+controller.getFriends = async (req, res, next) =>{
+  try {
+    const data = await User.find();
+    res.locals.friends = data;
+    return next();
+  } catch(err) {
+    return next({
+      log: `controller.js: ERROR: ${err}`,
+      status: 400,
+      message: {
+        err: 'An error occurred in controller.getFriends. Check server logs for more details',
+      }
+    })
+  }
+}
+
+
 module.exports = controller;

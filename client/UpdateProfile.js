@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+//need to send patch request 
+// stretch feature?
 const UpdateProfile = () => {
   return (
     <div className="profile-bio">

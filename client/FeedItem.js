@@ -8,7 +8,7 @@ const FeedItem = (props) => {
   return (
     <div>
       <div className="feedContainer">
-        <h3 className="userName">{userName}</h3>
+        <h3 className="userName">{username}</h3>
       </div>
       <ul className="userProfile">
         <li className="userDetail">Age: {age}</li>
