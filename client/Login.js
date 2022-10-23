@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import './Login.css';
 import SignUp from './SignUp.js';
 
+
 const Login = () => {
+  //is this state used?
   const [currUser, setCurrUser] = useState('');
   const [toggleSignUp, setToggleSignUp] = useState(false);
 
@@ -23,12 +26,13 @@ const Login = () => {
         return data.json();
       })
       .then((data) => {
-        console.log(data);
+        //are we fetching currUser data?
+        console.log('this is data',data);
       });
   };
   return (
     <div>
-      <SignUp />
+      {/* <SignUp /> */}
       <div className='LoginBox'>
         <h1>RendezFood</h1>
         <input
@@ -43,8 +47,13 @@ const Login = () => {
           placeholder='Password'
           id='password'
         ></input>
-        <button onClick={loginHandler}>Login</button>
-        <button onClick={() => setToggleSignUp(true)}>Sign Up</button>
+        {/* created route to feed...will need to make a conditional route so it will only route when verified user logs in*/}
+        <Link to='/Feed'>
+          <button onClick={loginHandler}>Login</button>
+        </Link>
+        <Link to='/SignUp'>
+          <button onClick={() => setToggleSignUp(true)}>Sign Up</button>
+        </Link>
       </div>
     </div>
   );

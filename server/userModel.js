@@ -7,6 +7,8 @@ const userSchema = mongoose.Schema({
   age: { type: Number, required: true },
   location: { type: String, required: true },
   cuisine: { type: String, required: true },
+  //we need a liked schema to save usernames of people we liked
+  //do we need one for no as well so they won't populate page
   matches: {},
   comment: { type: String, default: ' ' },
 });

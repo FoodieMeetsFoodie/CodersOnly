@@ -1,6 +1,9 @@
 import React from 'react';
 import './SignUp.css';
+import { Link } from 'react';
 
+
+//fetch request ---->>>>
 const SignUp = () => {
   const createUserHandler = (e) => {
     e.preventDefault();
@@ -54,15 +57,17 @@ const SignUp = () => {
           <option value='chinese'>Chinese</option>
           <option value='italian'>Italian</option>
           <option value='indian'>Indian</option>
-          <option value='japanese'>Japanese</option>
+          <option value='korean'>Korean</option>
         </select>
 
         <label>Bio:</label>
         <input name='comment' type='text' placeholder='bio'></input>
-
-        <button className='submitPost' type='submit'>
-          Submit
-        </button>
+        {/* linking submit button back to login page */}
+        {/* <Link to= '/Login'> */}
+          <button className='submitPost' type='submit'>
+            Submit
+          </button>
+        {/* </Link> */}
       </form>
       {/* <button onClick={createUserHandler}>Create Profile</button> */}
     </div>

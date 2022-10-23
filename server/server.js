@@ -8,10 +8,20 @@ mongoose.connect(
   'mongodb+srv://jchen0903:ilovecodesmith@cluster0.wjuijhf.mongodb.net/FoodTinder?retryWrites=true&w=majority'
 );
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+  res.status(200);
+  next();
+});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/api', apiRouter);
+
 
 app.use((err, req, res, next) => {
   const defaultErr = {

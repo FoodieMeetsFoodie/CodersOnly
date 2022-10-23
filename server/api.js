@@ -11,4 +11,8 @@ router.post('/', controller.createUser, (req, res) => {
   return res.status(201).json(res.locals.user);
 });
 
+router.get('/friends', controller.getFriends, (req, res) => {
+  return res.status(200).json(res.locals.friends)
+});
+
 module.exports = router;
