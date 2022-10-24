@@ -4,7 +4,27 @@ import { Link } from 'react-router-dom';
 //need to fetch our profile data from the database to fill in our profile
 const Profile = (props) => {
   //deconstructed props object
-  const { username, age, location, comment, cuisine } = props;
+  const [profileData, setProfileData] = useState({
+    username: null,
+    age: null,
+    location: null,
+    comment: null,
+    cuisine: null,
+  });
+
+  useEffect(() => {
+    fetch(`/api/${props.currUser}`)
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setProfileData(data);
+      });
+  }, []);
+
+  console.log(profileData);
+
+  const { username, age, location, comment, cuisine } = profileData;
 
   return (
     <div className='profile'>
@@ -20,7 +40,7 @@ const Profile = (props) => {
           </ul>
         </nav>
       </div>
-      <h1>My Profile</h1>
+      <h1>{username}</h1>
       <div className='profile-page'>
         <div className='profile-image'>
           <img />

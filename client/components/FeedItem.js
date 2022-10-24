@@ -3,7 +3,7 @@ import React from 'react';
 const FeedItem = (props) => {
   //the way each user profile will look in the feed
   if (!props.user) {
-    return <p>...Loading</p>;
+    return <p>No more users in your area</p>;
   }
   const { username, age, location, comment, cuisine } = props.user;
   return (

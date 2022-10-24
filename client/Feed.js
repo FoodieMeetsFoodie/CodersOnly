@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import FeedItem from './components/FeedItem';
-import axios from 'axios';
+import MatchPopUp from './components/MatchPopUp';
 
 const Feed = (props) => {
   //Comments
@@ -41,8 +41,9 @@ const Feed = (props) => {
 
   const [currIndex, setCurrIndex] = useState(0);
   const [currUserFeed, setCurrUserFeed] = useState([]);
+  const [toggleMatchPopUp, setToggleMatchPopUp] = useState(false);
 
-  const yesHandler = (e) => {
+  const yesHandler = () => {
     const clickedUser = document.querySelector('#userName').textContent;
 
     fetch(`/api/${props.currUser}/${clickedUser}/yes`, {
@@ -53,7 +54,7 @@ const Feed = (props) => {
       })
       .then((data) => {
         setCurrIndex((prevState) => prevState + 1);
-        console.log(data);
+        setToggleMatchPopUp(data);
       });
   };
 
@@ -89,6 +90,9 @@ const Feed = (props) => {
   return (
     <div>
       <Navbar />
+      {toggleMatchPopUp && (
+        <MatchPopUp setToggleMatchPopUp={setToggleMatchPopUp} />
+      )}
       <FeedItem user={currUserFeed[currIndex]} />
       <button onClick={noHandler}>No</button>
       <button onClick={yesHandler}>Yes</button>
