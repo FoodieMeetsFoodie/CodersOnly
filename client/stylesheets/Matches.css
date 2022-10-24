@@ -1,0 +1,18 @@
+body {
+  background-color: #c4fff9;
+}
+
+.MainMatchesContainer {
+  margin: 50px;
+  background-color: #c4fff9;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.MyMatches {
+  font-family: 'DejaVu Sans Mono', sans-serif;
+  margin-left: 50px;
+}
