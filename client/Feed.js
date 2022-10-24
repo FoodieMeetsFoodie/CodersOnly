@@ -9,7 +9,7 @@ import './stylesheets/Feed.css';
 const Feed = (props) => {
   const [currIndex, setCurrIndex] = useState(0);
   const [currUserFeed, setCurrUserFeed] = useState([]);
-  const [toggleMatchPopUp, setToggleMatchPopUp] = useState(false);
+  const [toggleMatchPopUp, setToggleMatchPopUp] = useState(true);
 
   const yesHandler = () => {
     const clickedUser = document.querySelector('#userName').textContent;
@@ -21,8 +21,10 @@ const Feed = (props) => {
         return data.json();
       })
       .then((data) => {
-        setCurrIndex((prevState) => prevState + 1);
         setToggleMatchPopUp(data);
+        if (!data) {
+          setCurrIndex((prevState) => prevState + 1);
+        }
       });
   };
 
@@ -36,7 +38,7 @@ const Feed = (props) => {
       })
       .then((data) => {
         setCurrIndex((prevState) => prevState + 1);
-        console.log(data);
+        // console.log(data);
       });
   };
 
@@ -56,14 +58,21 @@ const Feed = (props) => {
   }, []);
 
   return (
-    <div className='feedDi'>
+    <div>
       <Navbar />
-      {toggleMatchPopUp && (
-        <MatchPopUp setToggleMatchPopUp={setToggleMatchPopUp} />
-      )}
-      <FeedItem user={currUserFeed[currIndex]} />
-      <button onClick={noHandler}>No</button>
-      <button onClick={yesHandler}>Yes</button>
+      <div className='feedDiv'>
+        {toggleMatchPopUp && (
+          <MatchPopUp
+            setToggleMatchPopUp={setToggleMatchPopUp}
+            setCurrIndex={setCurrIndex}
+          />
+        )}
+        <FeedItem user={currUserFeed[currIndex]} />
+        <div className='feedBtns'>
+          <button onClick={yesHandler}>Yes</button>
+          <button onClick={noHandler}>No</button>
+        </div>
+      </div>
     </div>
   );
 };

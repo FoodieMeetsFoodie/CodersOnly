@@ -1,57 +1,28 @@
-.SignUpDiv {
-  height: 100%;
-  width: 100%;
-  margin: 0, 0, 0, 0;
-  display: flex;
-  justify-content: center;
-  background-image: url('https://images.pond5.com/computer-coding-background-footage-090890180_prevstill.jpeg');
-  background-size: cover;
-  padding: 0px;
-  margin: 0px;
-}
-
-.SignUp {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.SignUpForm {
-  display: flex;
-  flex-direction: column;
-  font-family: 'DejaVu Sans Mono', sans-serif;
-  color: rgb(228, 220, 220);
-}
-
-.SignUp button {
-  font-family: 'DejaVu Sans Mono', sans-serif;
-  border-radius: 5px;
-}
-
-.SignUp input {
-  border: none;
-  background: transparent;
-  font-family: 'DejaVu Sans Mono', sans-serif;
+.MatchPopUp {
+  position: absolute;
+  transform: rotate(380deg);
+  top: 150;
+  left: 210;
+  width: 300px;
+  text-align: center;
+  font-size: 32px;
   color: white;
-}
-
-.proglangDropDown {
-  border: none;
-  opacity: 0.75;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: rgb(7, 190, 184);
   font-family: 'DejaVu Sans Mono', sans-serif;
 }
 
-/* CSS */
-.SignUp button,
-.SignUp button:after {
+/* Animations for Buttons */
+.matchPopUp,
+.matchPopUp:after {
   width: 150px;
   height: 76px;
   line-height: 78px;
-  font-size: 14px;
+  font-size: 32px;
   font-family: 'DejaVu Sans Mono', sans-serif;
-  background: linear-gradient(45deg, transparent 5%, #07beb8 5%);
+  background: linear-gradient(45deg, transparent 5%, #202020 5%);
   border: 0;
   color: #fff;
   letter-spacing: 3px;
@@ -63,7 +34,8 @@
   touch-action: manipulation;
 }
 
-.SignUp button:after {
+/* button animation */
+.matchPopUp:after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -89,7 +61,7 @@
   clip-path: var(--slice-0);
 }
 
-.SignUp button:hover:after {
+.matchPopUp:hover:after {
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
 }
@@ -142,10 +114,15 @@
 }
 
 @media (min-width: 768px) {
-  .SignUp button,
-  .SignUp button:after {
-    width: 165px;
-    height: 45px;
+  .matchPopUp,
+  .matchPopUp:after {
+    width: 300px;
+    height: 150px;
     line-height: 20px;
   }
 }
+
+/*
+    height: 86px;
+    line-height: 88px;
+*/

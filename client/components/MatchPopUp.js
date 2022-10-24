@@ -1,17 +1,17 @@
 import React from 'react';
+import '../stylesheets/MatchPopUp.css';
 
 const MatchPopUp = (props) => {
   return (
-    <div>
-      <p>You Matched!!</p>
-      <button
-        onClick={() => {
-          props.setToggleMatchPopUp(false);
-        }}
-      >
-        close
-      </button>
-    </div>
+    <button
+      className='matchPopUp'
+      onClick={() => {
+        props.setToggleMatchPopUp(false);
+        props.setCurrIndex((prevState) => prevState + 1);
+      }}
+    >
+      You Matched!
+    </button>
   );
 };
 
