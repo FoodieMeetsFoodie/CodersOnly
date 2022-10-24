@@ -1,10 +1,9 @@
 import React from 'react';
-import './SignUp.css';
+import './stylesheets/SignUp.css';
 import { Link } from 'react';
 
-
 //fetch request ---->>>>
-const SignUp = () => {
+const SignUp = (props) => {
   const createUserHandler = (e) => {
     e.preventDefault();
     const userObj = {};
@@ -25,14 +24,21 @@ const SignUp = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(userObj),
-    }).then((data) => {
-      console.log(data);
-    });
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        props.setToggleSignUp(false);
+      });
   };
 
   return (
     <div className='SignUp'>
-      <button>X</button>
+      <button onClick={() => props.setToggleSignUp(false)}>
+        Back to Login
+      </button>
       <form className='SignUpForm' onSubmit={createUserHandler}>
         <label>Username:</label>
         <input name='username' type='text' placeholder='Username'></input>
@@ -62,17 +68,22 @@ const SignUp = () => {
 
         <label>Bio:</label>
         <input name='comment' type='text' placeholder='bio'></input>
-        {/* linking submit button back to login page */}
-        {/* this breaks for some reason when we uncomment the link component :( */}
-        {/* <Link to= '/Login'> */}
-          <button className='submitPost' type='submit'>
-            Submit
-          </button>
-        {/* </Link> */}
       </form>
-      {/* <button onClick={createUserHandler}>Create Profile</button> */}
+      <button onClick={createUserHandler}>Create Profile</button>
     </div>
   );
 };
 
 export default SignUp;
+
+// Old button router
+// {/* linking submit button back to login page */}
+// {/* this breaks for some reason when we uncomment the link component :( */}
+// {/* <Link to='/'> */}
+// <button
+//   onClick={() => props.setToggleSignUp(false)}
+//   className='submitPost'
+// >
+//   Signup
+// </button>
+// {/* </Link> */}

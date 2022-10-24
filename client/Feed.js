@@ -1,7 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import FeedItem from "./FeedItem";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from './components/NavBar';
+import FeedItem from './components/FeedItem';
 import axios from 'axios';
 
 const Feed = (props) => {
@@ -36,32 +37,90 @@ const Feed = (props) => {
   //   for (let i = 0; i < results.length; i++) {
   //     item.push(<FeedItem key={i} friends={ results[i] }/>)
   //   }
-    // return item;
-  
-  // console.log(friends)
+  // return item;
+
+  const [currIndex, setCurrIndex] = useState(0);
+  const [currUserFeed, setCurrUserFeed] = useState([]);
+
+  const yesHandler = (e) => {
+    const clickedUser = document.querySelector('#userName').textContent;
+
+    fetch(`/api/${props.currUser}/${clickedUser}/yes`, {
+      method: 'PATCH',
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setCurrIndex((prevState) => prevState + 1);
+        console.log(data);
+      });
+  };
+
+  const noHandler = (e) => {
+    const clickedUser = document.querySelector('#userName').textContent;
+    fetch(`/api/${props.currUser}/${clickedUser}/no`, {
+      method: 'PATCH',
+    })
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setCurrIndex((prevState) => prevState + 1);
+        console.log(data);
+      });
+  };
+
+  useEffect(() => {
+    fetch(`/api/${props.currUser}`)
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        const { matches } = data;
+        const nonRejectedUsers = props.allUsers.filter((el) => {
+          if (!matches[el.username]) return true;
+        });
+        setCurrUserFeed(nonRejectedUsers);
+        console.log(nonRejectedUsers);
+      });
+  }, []);
 
   return (
     <div>
-      <nav>
-          <ul>
-            <li><Link to='/Feed'>Foodie Feed</Link></li>
-            <li><Link to='/Profile'>My Profile</Link></li>
-          </ul>
-      </nav>
-      <h3>Foodie Friends</h3>
-      <div>
-        {/* sad attempt to render FeedItem */}
-        {/* <Link to='/Profile'>
-        <button>Profile</button>
-        </Link> */}
-        {/* friends.map((friend) => (
-          <div>
-            <FeedItem key={friends.id} friend={ friend }/>
-          </div>
-        )); */}
-      </div>
+      <Navbar />
+      <FeedItem user={currUserFeed[currIndex]} />
+      <button onClick={noHandler}>No</button>
+      <button onClick={yesHandler}>Yes</button>
     </div>
-  )
+  );
 };
 
 export default Feed;
+
+// return (
+//   <div>
+//     <nav>
+//       <ul>
+//         <li>
+//           <Link to='/Feed'>Foodie Feed</Link>
+//         </li>
+//         <li>
+//           <Link to='/Profile'>My Profile</Link>
+//         </li>
+//       </ul>
+//     </nav>
+//     <h3>Foodie Friends</h3>
+//     <div>
+//       {/* sad attempt to render FeedItem */}
+//       {/* <Link to='/Profile'>
+//       <button>Profile</button>
+//       </Link> */}
+//       {/* friends.map((friend) => (
+//         <div>
+//           <FeedItem key={friends.id} friend={ friend }/>
+//         </div>
+//       )); */}
+//     </div>
+//   </div>
+// );
