@@ -9,7 +9,7 @@ import './stylesheets/Feed.css';
 const Feed = (props) => {
   const [currIndex, setCurrIndex] = useState(0);
   const [currUserFeed, setCurrUserFeed] = useState([]);
-  const [toggleMatchPopUp, setToggleMatchPopUp] = useState(true);
+  const [toggleMatchPopUp, setToggleMatchPopUp] = useState(false);
 
   const yesHandler = () => {
     const clickedUser = document.querySelector('#userName').textContent;
