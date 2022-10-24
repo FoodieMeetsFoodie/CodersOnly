@@ -13,8 +13,8 @@ const SignUp = (props) => {
         userObj[el.name] = el.value;
       });
 
-    const cuisineType = document.querySelector('.CuisineDropDown').value;
-    userObj.cuisine = cuisineType;
+    const langType = document.querySelector('.proglangDropDown').value;
+    userObj.proglang = langType;
     userObj.matches = {};
     userObj.matches[userObj.username] = 'no';
 
@@ -35,41 +35,46 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className='SignUp'>
-      <button onClick={() => props.setToggleSignUp(false)}>
-        Back to Login
-      </button>
-      <form className='SignUpForm' onSubmit={createUserHandler}>
-        <label>Username:</label>
-        <input name='username' type='text' placeholder='Username'></input>
+    <div className='SignUpDiv'>
+      <div className='SignUp'>
+        <button onClick={() => props.setToggleSignUp(false)}>
+          Back to Login
+        </button>
+        <form className='SignUpForm' onSubmit={createUserHandler}>
+          <label>Username:</label>
+          <input name='username' type='text' placeholder='Username'></input>
 
-        <label>Password:</label>
-        <input name='password' type='password' placeholder='Password'></input>
+          <label>Password:</label>
+          <input name='password' type='password' placeholder='Password'></input>
 
-        <label>Age:</label>
-        <input name='age' type='number' placeholder='Age'></input>
+          <label>Age:</label>
+          <input name='age' type='number' placeholder='Age' min='1'></input>
 
-        <label>State:</label>
-        <input name='location' type='text' placeholder='State'></input>
+          <label>State:</label>
+          <input name='location' type='text' placeholder='State'></input>
 
-        <label>Cuisine:</label>
-        <select
-          className='CuisineDropDown'
-          name='cuisine'
-          type='text'
-          placeholder='Cuisine'
-        >
-          <option value='american'>American</option>
-          <option value='chinese'>Chinese</option>
-          <option value='italian'>Italian</option>
-          <option value='indian'>Indian</option>
-          <option value='korean'>Korean</option>
-        </select>
+          <label>Photo url:</label>
+          <input name='url' type='text' placeholder='url'></input>
 
-        <label>Bio:</label>
-        <input name='comment' type='text' placeholder='bio'></input>
-      </form>
-      <button onClick={createUserHandler}>Create Profile</button>
+          <label>Programming Language:</label>
+          <select
+            className='proglangDropDown'
+            name='proglang'
+            type='text'
+            placeholder='Programming Language'
+          >
+            <option value='javascript'>JavaScript</option>
+            <option value='java'>Java</option>
+            <option value='python'>Python</option>
+            <option value='C++'>C++</option>
+            <option value='C#'>C#</option>
+          </select>
+
+          <label>Bio:</label>
+          <input name='comment' type='text' placeholder='bio'></input>
+        </form>
+        <button onClick={createUserHandler}>Create Profile</button>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from './components/NavBar';
 
 //need to fetch our profile data from the database to fill in our profile
 const Profile = (props) => {
@@ -9,7 +10,7 @@ const Profile = (props) => {
     age: null,
     location: null,
     comment: null,
-    cuisine: null,
+    proglang: null,
   });
 
   useEffect(() => {
@@ -24,28 +25,16 @@ const Profile = (props) => {
 
   console.log(profileData);
 
-  const { username, age, location, comment, cuisine } = profileData;
+  const { username, age, location, comment, proglang, url } = profileData;
 
   return (
     <div className='profile'>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/Feed'>Foodie Feed</Link>
-            </li>
-            <li>
-              <Link to='/Profile'>My Profile</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Navbar />
       <h1>{username}</h1>
       <div className='profile-page'>
         <div className='profile-image'>
-          <img />
           {/* should we have an upload pic feature if we dont actually code out edit profile? */}
-          <h1>Hello I need an image pls</h1>
+          <img src={url} alt='profileImage' />
           {/* when Edit Profile is clicked it will route to UpdatProfile page */}
           <Link to='/UpdateProfile'>
             <button>Edit Profile</button>
@@ -59,7 +48,7 @@ const Profile = (props) => {
             <li className='userDetail'>Age: {age}</li>
             <li className='userDetail'>Location: {location}</li>
             <li className='userDetail'>Bio: {comment}</li>
-            <li className='userDetail'>Cuisine: {cuisine}</li>
+            <li className='userDetail'>Programming Language: {proglang}</li>
           </ul>
         </div>
       </div>

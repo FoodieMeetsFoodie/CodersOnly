@@ -35,16 +35,17 @@ const App = () => {
       />
       <Route path='/Profile' element={<Profile currUser={currUser} />} />
     </Routes>
-    // <div>
-    //   <div>
-    //     {/* <Profile/>
-    //     <UpdateProfile/> */}
-    //     <HomePage/>
-    //   </div>
-    //   {/* <Login /> */}
-    // </div>
   );
 };
+
+// <div>
+//   <div>
+//     {/* <Profile/>
+//     <UpdateProfile/> */}
+//     <HomePage/>
+//   </div>
+//   {/* <Login /> */}
+// </div>
 
 export default App;
 

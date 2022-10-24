@@ -33,25 +33,34 @@ const Login = (props) => {
     return <SignUp setToggleSignUp={setToggleSignUp} />;
   }
   return (
-    <div>
+    <div className='LoginInDiv'>
       <div className='LoginBox'>
-        <h1>RendezFood</h1>
+        <h1 className='title'>CodersOnly</h1>
         <input
+          className='id'
           name='username'
           type='text'
           placeholder='Username'
           id='loginUsername'
         ></input>
         <input
+          className='password'
           name='password'
-          type='text'
+          type='password'
           placeholder='Password'
           id='password'
         ></input>
         {/* created route to feed...will need to make a conditional route so it will only route when verified user logs in*/}
-        <button onClick={loginHandler}>Login</button>
+        <button class='loginButtons' onClick={loginHandler}>
+          Login
+        </button>
         {props.currUser && <Navigate to='/feed' />}
-        <button onClick={() => setToggleSignUp(!toggleSignUp)}>Sign Up</button>
+        <button
+          class='loginButtons'
+          onClick={() => setToggleSignUp(!toggleSignUp)}
+        >
+          Sign Up
+        </button>
       </div>
     </div>
   );

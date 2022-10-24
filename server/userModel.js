@@ -6,9 +6,10 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   age: { type: Number, required: true },
   location: { type: String, required: true },
-  cuisine: { type: String, required: true },
+  proglang: { type: String, required: true },
   matches: {},
   comment: { type: String, default: ' ' },
+  url: { type: String },
 });
 
 const User = mongoose.model('user', userSchema);

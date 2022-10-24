@@ -1,3 +1,17 @@
+@import url('http://fonts.cdnfonts.com/css/dejavu-sans-mono');
+
+.SignUpDiv {
+  height: 100%;
+  width: 100%;
+  margin: 0, 0, 0, 0;
+  display: flex;
+  justify-content: center;
+  background-image: url('https://images.pond5.com/computer-coding-background-footage-090890180_prevstill.jpeg');
+  background-size: cover;
+  padding: 0px;
+  margin: 0px;
+}
+
 .SignUp {
   display: flex;
   flex-direction: column;
@@ -9,4 +23,23 @@
 .SignUpForm {
   display: flex;
   flex-direction: column;
+  font-family: 'DejaVu Sans Mono', sans-serif;
+  color: rgb(228, 220, 220);
+}
+
+.SignUp button {
+  font-family: 'DejaVu Sans Mono', sans-serif;
+}
+
+.SignUp input {
+  border: none;
+  background: transparent;
+  font-family: 'DejaVu Sans Mono', sans-serif;
+  color: white;
+}
+
+.proglangDropDown {
+  border: none;
+  opacity: 0.75;
+  font-family: 'DejaVu Sans Mono', sans-serif;
 }

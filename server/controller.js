@@ -4,8 +4,16 @@ const controller = {};
 
 controller.createUser = async (req, res, next) => {
   try {
-    const { username, password, age, location, cuisine, comment, matches } =
-      req.body;
+    const {
+      username,
+      password,
+      age,
+      location,
+      proglang,
+      comment,
+      matches,
+      url,
+    } = req.body;
     if (typeof username !== 'string')
       throw new Error('username should be a string');
     res.locals.user = await User.create({
@@ -13,9 +21,10 @@ controller.createUser = async (req, res, next) => {
       password,
       age,
       location,
-      cuisine,
+      proglang,
       comment,
       matches,
+      url,
     });
     return next();
   } catch (err) {

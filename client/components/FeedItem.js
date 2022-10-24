@@ -5,17 +5,18 @@ const FeedItem = (props) => {
   if (!props.user) {
     return <p>No more users in your area</p>;
   }
-  const { username, age, location, comment, cuisine } = props.user;
+  const { username, age, location, comment, proglang, url } = props.user;
   return (
     <div>
       <div className='feedContainer'>
         <h3 id='userName'>{username}</h3>
       </div>
       <ul className='userProfile'>
+        <img src={url} alt='profileImage' />
         <li className='userDetail'>Age: {age}</li>
         <li className='userDetail'>Location: {location}</li>
         <li className='userDetail'>Bio: {comment}</li>
-        <li className='userDetail'>Cuisine: {cuisine}</li>
+        <li className='userDetail'>Programming Language: {proglang}</li>
       </ul>
     </div>
   );
