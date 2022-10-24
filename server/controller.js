@@ -17,7 +17,6 @@ controller.createUser = async (req, res, next) => {
       comment,
       matches,
     });
-    console.log(res.locals.user);
     return next();
   } catch (err) {
     return next({
@@ -33,8 +32,9 @@ controller.createUser = async (req, res, next) => {
 // change functionality to be for all instances of matches with value of not 'no' (or 'yes' and null)
 controller.getUser = async (req, res, next) => {
   try {
+    console.log('ID ', req.params);
     const { username } = req.params;
-    res.locals.user = await User.find({ username }).exec();
+    res.locals.user = await User.findOne({ username }).exec();
     return next();
   } catch (err) {
     return next({
@@ -67,7 +67,6 @@ controller.getUser = async (req, res, next) => {
 controller.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body);
     const found = await User.findOne({
       username: username,
       password: password,
@@ -86,21 +85,50 @@ controller.verifyUser = async (req, res, next) => {
 };
 
 //this controller is for fetching all the profiles from our db
-controller.getFriends = async (req, res, next) =>{
+controller.getFriends = async (req, res, next) => {
   try {
     const data = await User.find();
     res.locals.friends = data;
     return next();
-  } catch(err) {
+  } catch (err) {
     return next({
       log: `controller.js: ERROR: ${err}`,
       status: 400,
       message: {
         err: 'An error occurred in controller.getFriends. Check server logs for more details',
-      }
-    })
+      },
+    });
   }
-}
+};
 
+// controller to update user's matches
+controller.updateUserMatches = async (req, res, next) => {
+  try {
+    const { username, clickedUser, decision } = req.params;
+    const currUser = await User.findOne({ username });
+    currUser.matches[clickedUser] = decision;
+    await User.updateOne({ username }, { matches: currUser.matches }).exec();
+
+    // check if decision is yes and if clickedUser's matches also includes currUser: yes
+    const { matches } = await User.findOne({ username: clickedUser });
+    console.log(matches[username] === 'yes');
+    console.log(matches[username]);
+    if (matches[username] === 'yes' && decision === 'yes') {
+      res.locals.match = true;
+    } else {
+      res.locals.match = false;
+    }
+
+    return next();
+  } catch (err) {
+    return next({
+      log: `controller.js: ERROR: ${err}`,
+      status: 400,
+      message: {
+        err: 'An error occurred in controller.updateUserMatches. Check server logs for more details',
+      },
+    });
+  }
+};
 
 module.exports = controller;
