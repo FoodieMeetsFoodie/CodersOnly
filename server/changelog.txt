@@ -1,0 +1,6 @@
+Frontend will need to change these endpoint calls
+
+oldValue --> newValue:
+
+/api/verification --> /api/auth
+/api/friends --> /api/functions/friends

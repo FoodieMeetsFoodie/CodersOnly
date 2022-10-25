@@ -3,7 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  entry: './client/index.js',
+  entry: '/client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -15,7 +15,8 @@ const config = {
       directory: path.join(__dirname, './build'),
       publicPath: '/',
     },
-    // port: 3000,
+    historyApiFallback: true,
+
     proxy: {
       '/api/**': 'http://localhost:3000',
     },
@@ -30,7 +31,7 @@ const config = {
             presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
       },
       {
         test: /\.css$/,
@@ -47,7 +48,7 @@ const config = {
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
-  plugins: [new HtmlWebpackPlugin({ template: './client/index.html' })],
+  plugins: [new HtmlWebpackPlugin({ template: 'index.html' })],
 };
 
 module.exports = config;
