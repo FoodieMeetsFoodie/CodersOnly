@@ -1,4 +1,5 @@
 const User = require('./userModel');
+const Session = require('./sessionModel');
 
 const controller = {};
 
@@ -56,23 +57,6 @@ controller.getUser = async (req, res, next) => {
   }
 };
 
-// controller.updateUser = async (req, res, next) => {
-//   try {
-//     const { username } = req.params;
-//     res.locals.user = await User.updateOne({username}, TODO: ADD UPDATE).exec();
-//     return next();
-//   }
-//   catch (err) {
-//     return next({
-//         log: `controller.js: ERROR: ${err}`,
-//         status: 400,
-//         message: {
-//         err: 'An error occurred in controller.updateUser. Check server logs for more details',
-//         },
-//     });
-//   }
-// };
-
 controller.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -80,7 +64,19 @@ controller.verifyUser = async (req, res, next) => {
       username: username,
       password: password,
     });
-    found ? (res.locals.userExists = true) : (res.locals.userExists = false);
+    if (found) {
+      res.locals.userExists = true;
+      console.log(res.locals.userExists);
+
+      res.cookie('ssid', found._id, {
+        httpOnly: true,
+      });
+
+      const newSession = new Session({ cookieId: found._id });
+      newSession.save();
+    } else {
+      res.locals.userExists = false;
+    }
     return next();
   } catch (err) {
     return next({
@@ -138,6 +134,23 @@ controller.updateUserMatches = async (req, res, next) => {
       },
     });
   }
+};
+
+controller.isLoggedIn = async (req, res, next) => {
+  try {
+    const currSession = await Session.findOne({ cookieId: req.cookies.ssid });
+    const { username } = await User.findOne({ _id: req.cookies.ssid });
+
+    currSession
+      ? (res.locals.sessionFound = username)
+      : (res.locals.sessionFound = false);
+  } catch {
+    next({
+      log: 'session controller isloggedin error',
+      message: { err: 'session does not exist or expired' },
+    });
+  }
+  next();
 };
 
 module.exports = controller;

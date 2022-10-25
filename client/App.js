@@ -21,6 +21,12 @@ const App = () => {
       .then((data) => {
         setAllUsers(data);
       });
+
+    fetch('/api/checkSession')
+      .then((response) => response.json())
+      .then((data) => {
+        setCurrUser(data);
+      });
   }, []);
 
   return (
