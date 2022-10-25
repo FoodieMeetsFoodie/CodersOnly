@@ -10,7 +10,6 @@ router.post('/', controller.createUser, (req, res) => {
   return res.status(201).json(res.locals.user);
 });
 
-//get data from all users stored in database
 router.get('/friends', controller.getFriends, (req, res) => {
   return res.status(200).json(res.locals.friends);
 });
