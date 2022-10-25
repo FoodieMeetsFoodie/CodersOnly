@@ -2,10 +2,10 @@ import { Link, Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Login from './Login.js';
 import SignUp from './SignUp';
-import HomePage from './HomePage.js';
 import Profile from './Profile';
-import UpdateProfile from './components/UpdateProfile';
 import Feed from './Feed';
+import UpdateProfile from './components/UpdateProfile';
+import Matches from './Matches';
 
 //imported stylesheet
 import './stylesheets/style.css';
@@ -34,17 +34,22 @@ const App = () => {
         element={<Feed currUser={currUser} allUsers={allUsers} />}
       />
       <Route path='/Profile' element={<Profile currUser={currUser} />} />
+      <Route
+        path='/Matches'
+        element={<Matches currUser={currUser} allUsers={allUsers} />}
+      />
     </Routes>
-    // <div>
-    //   <div>
-    //     {/* <Profile/>
-    //     <UpdateProfile/> */}
-    //     <HomePage/>
-    //   </div>
-    //   {/* <Login /> */}
-    // </div>
   );
 };
+
+// <div>
+//   <div>
+//     {/* <Profile/>
+//     <UpdateProfile/> */}
+//     <HomePage/>
+//   </div>
+//   {/* <Login /> */}
+// </div>
 
 export default App;
 

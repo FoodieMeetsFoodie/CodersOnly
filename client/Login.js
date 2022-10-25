@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './stylesheets/Login.css';
 import SignUp from './SignUp.js';
+import Mole from './assets/Star-nosed-mole.png';
 
 const Login = (props) => {
   //is this state used?
@@ -33,25 +34,38 @@ const Login = (props) => {
     return <SignUp setToggleSignUp={setToggleSignUp} />;
   }
   return (
-    <div>
+    <div className='LoginInDiv'>
       <div className='LoginBox'>
-        <h1>RendezFood</h1>
+        <div className='LoginTitle'>
+          <img className='loginImage' src={Mole} alt='starmole' />
+          <h1 className='title'>CodersOnly</h1>
+        </div>
         <input
+          className='id'
           name='username'
           type='text'
           placeholder='Username'
           id='loginUsername'
         ></input>
         <input
+          className='password'
           name='password'
-          type='text'
+          type='password'
           placeholder='Password'
           id='password'
         ></input>
-        {/* created route to feed...will need to make a conditional route so it will only route when verified user logs in*/}
-        <button onClick={loginHandler}>Login</button>
-        {props.currUser && <Navigate to='/feed' />}
-        <button onClick={() => setToggleSignUp(!toggleSignUp)}>Sign Up</button>
+        <div className='LoginScreenButtons'>
+          <button className='loginButtons' onClick={loginHandler}>
+            Login
+          </button>
+          {props.currUser && <Navigate to='/feed' />}
+          <button
+            className='loginButtons'
+            onClick={() => setToggleSignUp(!toggleSignUp)}
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -59,6 +73,9 @@ const Login = (props) => {
 
 export default Login;
 
+{
+  /* created route to feed...will need to make a conditional route so it will only route when verified user logs in*/
+}
 /*
 <Route exact path="/">
   {currUser !== '' && <Redirect to="/" /> : <Feed />}

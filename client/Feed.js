@@ -4,41 +4,9 @@ import { Link } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import FeedItem from './components/FeedItem';
 import MatchPopUp from './components/MatchPopUp';
+import './stylesheets/Feed.css';
 
 const Feed = (props) => {
-  //Comments
-  //Fetch user profiles from the database to populate our feed
-  //make sure to not include our own profile
-
-  //L&P attempt: tried to fetch state here and then loop through it to pass our state to our FeedItem component
-  // const [ friends, setFriends ] = useState();
-
-  // useEffect(() => {
-  //   fetch('/api/friends')
-  //   .then(response => response.json())
-  //   .then(({data: friends}) => {
-  //     console.log('i am data', {data: friends})
-  //     setFriends(friends)
-  //   })
-  // }, []);
-  // fetch('/api/friends', {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // }).then((data) => {
-  //   console.log(data);
-  // });
-
-  // const createFeed = (results) => {
-  //   console.log('this is friends', results)
-  //   // setFriends(results);
-  //   const item = [];
-  //   for (let i = 0; i < results.length; i++) {
-  //     item.push(<FeedItem key={i} friends={ results[i] }/>)
-  //   }
-  // return item;
-
   const [currIndex, setCurrIndex] = useState(0);
   const [currUserFeed, setCurrUserFeed] = useState([]);
   const [toggleMatchPopUp, setToggleMatchPopUp] = useState(false);
@@ -53,8 +21,10 @@ const Feed = (props) => {
         return data.json();
       })
       .then((data) => {
-        setCurrIndex((prevState) => prevState + 1);
         setToggleMatchPopUp(data);
+        if (!data) {
+          setCurrIndex((prevState) => prevState + 1);
+        }
       });
   };
 
@@ -68,7 +38,7 @@ const Feed = (props) => {
       })
       .then((data) => {
         setCurrIndex((prevState) => prevState + 1);
-        console.log(data);
+        // console.log(data);
       });
   };
 
@@ -90,12 +60,19 @@ const Feed = (props) => {
   return (
     <div>
       <Navbar />
-      {toggleMatchPopUp && (
-        <MatchPopUp setToggleMatchPopUp={setToggleMatchPopUp} />
-      )}
-      <FeedItem user={currUserFeed[currIndex]} />
-      <button onClick={noHandler}>No</button>
-      <button onClick={yesHandler}>Yes</button>
+      <div className='feedDiv'>
+        {toggleMatchPopUp && (
+          <MatchPopUp
+            setToggleMatchPopUp={setToggleMatchPopUp}
+            setCurrIndex={setCurrIndex}
+          />
+        )}
+        <FeedItem user={currUserFeed[currIndex]} />
+        <div className='feedBtns'>
+          <button onClick={yesHandler}>Yes</button>
+          <button onClick={noHandler}>No</button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -128,3 +105,36 @@ export default Feed;
 //     </div>
 //   </div>
 // );
+
+//Comments
+//Fetch user profiles from the database to populate our feed
+//make sure to not include our own profile
+
+//L&P attempt: tried to fetch state here and then loop through it to pass our state to our FeedItem component
+// const [ friends, setFriends ] = useState();
+
+// useEffect(() => {
+//   fetch('/api/friends')
+//   .then(response => response.json())
+//   .then(({data: friends}) => {
+//     console.log('i am data', {data: friends})
+//     setFriends(friends)
+//   })
+// }, []);
+// fetch('/api/friends', {
+//   method: 'GET',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// }).then((data) => {
+//   console.log(data);
+// });
+
+// const createFeed = (results) => {
+//   console.log('this is friends', results)
+//   // setFriends(results);
+//   const item = [];
+//   for (let i = 0; i < results.length; i++) {
+//     item.push(<FeedItem key={i} friends={ results[i] }/>)
+//   }
+// return item;

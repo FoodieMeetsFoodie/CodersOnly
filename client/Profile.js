@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from './components/NavBar';
+import './stylesheets/Profile.css';
 
 //need to fetch our profile data from the database to fill in our profile
 const Profile = (props) => {
@@ -9,7 +11,7 @@ const Profile = (props) => {
     age: null,
     location: null,
     comment: null,
-    cuisine: null,
+    proglang: null,
   });
 
   useEffect(() => {
@@ -24,43 +26,21 @@ const Profile = (props) => {
 
   console.log(profileData);
 
-  const { username, age, location, comment, cuisine } = profileData;
+  const { username, age, location, comment, proglang, url } = profileData;
 
   return (
-    <div className='profile'>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/Feed'>Foodie Feed</Link>
-            </li>
-            <li>
-              <Link to='/Profile'>My Profile</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <h1>{username}</h1>
-      <div className='profile-page'>
-        <div className='profile-image'>
-          <img />
-          {/* should we have an upload pic feature if we dont actually code out edit profile? */}
-          <h1>Hello I need an image pls</h1>
-          {/* when Edit Profile is clicked it will route to UpdatProfile page */}
-          <Link to='/UpdateProfile'>
-            <button>Edit Profile</button>
-          </Link>
-        </div>
-        <div className='profile-bio'>
-          <div className='feedContainer'>
-            {/* <h3 className="userName">{userName}</h3> */}
+    <div>
+      <Navbar />
+      <div className='profilePage'>
+        <div className='profileContainer'>
+          <div className='username'>
+            <h1>{username}</h1>
           </div>
-          <ul className='userProfile'>
-            <li className='userDetail'>Age: {age}</li>
-            <li className='userDetail'>Location: {location}</li>
-            <li className='userDetail'>Bio: {comment}</li>
-            <li className='userDetail'>Cuisine: {cuisine}</li>
-          </ul>
+          <img className='profileImage' src={url} alt='profileImage' />
+          <p className='userDetail'>Age: {age}</p>
+          <p className='userDetail'>Location: {location}</p>
+          <p className='userDetail'>Bio: {comment}</p>
+          <p className='userDetail'>Programming Language: {proglang}</p>
         </div>
       </div>
     </div>
