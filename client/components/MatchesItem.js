@@ -1,8 +1,12 @@
 import React from 'react';
 import '../stylesheets/MatchesItem.css';
 import Chat from './ChatFire';
+import { useState } from 'react';
+import CollabBox from './CollabBox';
 
 const MatchesItem = (props) => {
+  //react hook for chat module
+  const [buttonPopup, setButtonPopup] = useState(false);
   // The way each user profile will look in the feed
   if (!props.user) {
     return <p>You have no matches xD</p>;
@@ -10,7 +14,6 @@ const MatchesItem = (props) => {
   const { username, age, location, comment, proglang, url } = props.user;
   return (
     <div className='matchesContainer'>
-      <Chat currUser={props.currUser} />
       <div className='username'>
         <h3 id='userName'>{username}</h3>
       </div>
@@ -19,7 +22,15 @@ const MatchesItem = (props) => {
       <p className='userDetail'>Location: {location}</p>
       <p className='userDetail'>Bio: {comment}</p>
       <p className='userDetail'>Programming Language: {proglang}</p>
-      <button>slideInto{username}DMs()</button>
+      <button className='profile-btn' onClick={() => setButtonPopup(true)}>
+        slideInto{username}DMs()
+      </button>
+      <CollabBox
+        trigger={buttonPopup}
+        setButtonPopup={setButtonPopup}
+        currUser={props.currUser}
+        friend={username}
+      />
     </div>
   );
 };

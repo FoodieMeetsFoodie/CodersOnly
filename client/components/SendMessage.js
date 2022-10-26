@@ -10,7 +10,7 @@ function SendMessage(props) {
     e.preventDefault();
     const currUser = props.currUser;
 
-    await db.collection('messages').add({
+    await db.collection(`${props.collectionName}`).add({
       text: `${currUser}: ${msg}`,
       id: currUser,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),

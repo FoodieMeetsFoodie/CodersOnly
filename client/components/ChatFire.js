@@ -4,10 +4,14 @@ import SendMessage from './SendMessage';
 
 const Chat = (props) => {
   const [messages, setMessages] = useState([]);
+  const friend = props.friend;
+  const currUser = props.currUser;
+
+  const collectionName = [friend, currUser].sort();
 
   useEffect(() => {
     console.log('hi');
-    db.collection('messages')
+    db.collection(`${collectionName}`)
       .orderBy('createdAt')
       .onSnapshot((snapshot) => {
         setMessages(snapshot.docs.map((doc) => doc.data()));
@@ -23,7 +27,7 @@ const Chat = (props) => {
           </div>
         );
       })}
-      <SendMessage currUser={props.currUser} />
+      <SendMessage currUser={props.currUser} collectionName={collectionName} />
     </div>
   );
 };
