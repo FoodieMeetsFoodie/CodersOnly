@@ -25,7 +25,7 @@ messagesController.postMessage = async (req, res, next) => {
 
     console.log('===');
     const postMsgQuery =
-      'INSERT INTO messages (chat_id, owner_id, message_text, time_stamp)\
+      'INSERT INTO messages (chat_id, owner_name, message_text, time_stamp)\
       VALUES($1, $2, $3, $4) RETURNING *;';
     values = [chatId, user_1, messageText, new Date()];
     const results = await db.query(postMsgQuery, values);
