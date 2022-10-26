@@ -1,0 +1,7 @@
+.codepen {
+  width: 1000px;
+  height: 500px;
+  border: 0;
+  border-radius: 4px;
+  overflow: auto;
+}
