@@ -11,8 +11,6 @@ authController.verifyUser = async (req, res, next) => {
       username: username
     });
 
-    console.log(found);
-
     let verified = await bcrypt.compare(password, found.password)
 
     verified ? (res.locals.userExists = true) : (res.locals.userExists = false);
