@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('./controller');
+const authController = require('../controllers/authController.js');
 
-router.post('/', controller.verifyUser, (req, res) => {
+router.post('/', authController.verifyUser, (req, res) => {
   return res.status(201).json(res.locals.userExists);
 });
+
 module.exports = router;
