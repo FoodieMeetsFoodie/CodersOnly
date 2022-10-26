@@ -35,7 +35,7 @@ const MatchesItem = (props) => {
       <p className='userDetail'>Bio: {comment}</p>
       <p className='userDetail'>Programming Language: {proglang}</p>
       <button onClick={modalDisplay}>slideInto{username}DMs()</button>
-      <ChatBoxModal show={modal} close={modalDisplay} name={username} />
+      <ChatBoxModal show={modal} close={modalDisplay} name={username} pic={url} />
     </div>
   );
 };

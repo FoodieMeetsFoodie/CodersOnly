@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react';
 import '../stylesheets/ModalContainer.css';
 import Messages from './Messages';
 import axios from 'axios';
+import MessagesRecieved from './MessagesRecieved'
 
 const ChatBoxModal = (props) => {
     const [msgs, setMsgs] = useState();
-    const [currentUser, setCurrentUser] = useState();
+    const [pfp, setPfp] = useState();
     const token = JSON.parse(localStorage.getItem('token'));
 
     useEffect(() => {
         async function getMsgs() {
             // will be making await calls using axios to backend - passing down to model as messages prop
-            axios.get('/api/messages/dummymessage')
+            const user1 = await axios.get(`/api/${token}`)
+            axios.get(`/api/messages?user_1=${user1.data.username}&user_2=${props.name}`)
             .then(response => {
                 const newArr = response.data.map(el => {
-                    return <Messages message={el.message} />
+                    if(el.owner_name === user1.data.username){
+                        return <Messages username={el.owner_name} message={el.message_text} pic={user1.data.url} />
+                    } else {
+                        return <MessagesRecieved username={el.owner_name} message={el.message_text} pic={props.pic} />
+                    }
                 })
                 // console.log(newArr)
                 setMsgs(newArr); 
@@ -31,7 +37,7 @@ const ChatBoxModal = (props) => {
             messageText: document.querySelector('.forMsg').value
         })
         document.querySelector('.forMsg').value = ''
-        console.log(document.querySelector('.forMsg').value)
+        // console.log(document.querySelector('.forMsg').value)
     }
 
     
