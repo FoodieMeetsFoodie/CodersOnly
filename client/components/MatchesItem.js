@@ -1,5 +1,6 @@
 import React from 'react';
 import '../stylesheets/MatchesItem.css';
+import Chat from './ChatFire';
 import { useState } from 'react';
 import CollabBox from './CollabBox';
 
@@ -12,19 +13,24 @@ const MatchesItem = (props) => {
   }
   const { username, age, location, comment, proglang, url } = props.user;
   return (
-    <div className="matchesContainer">
-      <div className="username">
-        <h3 id="userName">{username}</h3>
+    <div className='matchesContainer'>
+      <div className='username'>
+        <h3 id='userName'>{username}</h3>
       </div>
-      <img className="matchesImage" src={url} alt="profileImage" />
-      <p className="userDetail">Age: {age}</p>
-      <p className="userDetail">Location: {location}</p>
-      <p className="userDetail">Bio: {comment}</p>
-      <p className="userDetail">Programming Language: {proglang}</p>
-      <button className="profile-btn" onClick={() => setButtonPopup(true)}>
+      <img className='matchesImage' src={url} alt='profileImage' />
+      <p className='userDetail'>Age: {age}</p>
+      <p className='userDetail'>Location: {location}</p>
+      <p className='userDetail'>Bio: {comment}</p>
+      <p className='userDetail'>Programming Language: {proglang}</p>
+      <button className='profile-btn' onClick={() => setButtonPopup(true)}>
         slideInto{username}DMs()
       </button>
-      <CollabBox trigger={buttonPopup} setButtonPopup={setButtonPopup} />
+      <CollabBox
+        trigger={buttonPopup}
+        setButtonPopup={setButtonPopup}
+        currUser={props.currUser}
+        friend={username}
+      />
     </div>
   );
 };
