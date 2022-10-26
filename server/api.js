@@ -6,6 +6,10 @@ router.get('/checkSession', controller.isLoggedIn, (req, res) => {
   return res.status(200).json(res.locals.sessionFound);
 });
 
+router.delete('/:id', controller.logOut, (req, res) => {
+  return res.status(200).json(false);
+});
+
 router.post('/verification', controller.verifyUser, (req, res) => {
   return res.status(201).json(res.locals.userExists);
 });

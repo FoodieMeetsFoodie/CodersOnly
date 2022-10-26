@@ -39,7 +39,10 @@ const App = () => {
         path='/Feed'
         element={<Feed currUser={currUser} allUsers={allUsers} />}
       />
-      <Route path='/Profile' element={<Profile currUser={currUser} />} />
+      <Route
+        path='/Profile'
+        element={<Profile currUser={currUser} setCurrUser={setCurrUser} />}
+      />
       <Route
         path='/Matches'
         element={<Matches currUser={currUser} allUsers={allUsers} />}
