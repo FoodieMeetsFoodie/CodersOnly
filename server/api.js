@@ -24,7 +24,7 @@ router.patch(
   '/:username/:clickedUser/:decision',
   controller.updateUserMatches,
   (req, res) => {
-    console.log(res.locals.match);
+    console.log('line 27', res.locals.match);
     return res.status(200).json(res.locals.match);
   }
 );

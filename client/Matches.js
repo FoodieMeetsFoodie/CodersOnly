@@ -5,6 +5,7 @@ import Navbar from './components/NavBar';
 import './stylesheets/Matches.css';
 const Matches = (props) => {
   const [userMatches, setUserMatches] = useState([]);
+  const [toggleChat, setToggleChat] = useState(false);
 
   useEffect(() => {
     fetch(`/api/${props.currUser}`)
@@ -25,7 +26,17 @@ const Matches = (props) => {
         setUserMatches(matchesItemsArr);
       });
   }, []);
-
+  if (toggleChat) {
+    return (
+      <div>
+        <Navbar />
+        <h1 className='MyMatches'>Chat</h1>
+        <div className='chatContainer'>
+          <Chat setToggleChat={setToggleChat} user={currUser} matchUser={el.username} />
+        </div>
+    </div>
+    )
+  }
   return (
     <div>
       <Navbar />
