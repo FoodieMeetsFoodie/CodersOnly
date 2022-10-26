@@ -54,7 +54,7 @@ const Profile = (props) => {
           <div className='username'>
             <h1>{username}</h1>
             <button className='logOutBtn' onClick={logOutHandler}>
-              Log out
+              Log Out
             </button>
           </div>
           <img className='profileImage' src={url} alt='profileImage' />
