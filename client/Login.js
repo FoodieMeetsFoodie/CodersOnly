@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './stylesheets/Login.css';
 import SignUp from './SignUp.js';
-import Mole from './assets/Star-nosed-mole.png';
+import thundergoose from './assets/thundergoose.png';
 
 const Login = (props) => {
   //is this state used?
   const [toggleSignUp, setToggleSignUp] = useState(false);
+  const [toggleWrongLogin, setToggleWrongLogin] = useState(false);
 
   const loginHandler = () => {
     const id = document.getElementById('loginUsername').value;
@@ -27,6 +28,8 @@ const Login = (props) => {
       .then((data) => {
         if (data) {
           props.setCurrUser(id);
+        } else {
+          setToggleWrongLogin(true);
         }
       });
   };
@@ -37,7 +40,7 @@ const Login = (props) => {
     <div className='LoginInDiv'>
       <div className='LoginBox'>
         <div className='LoginTitle'>
-          <img className='loginImage' src={Mole} alt='starmole' />
+          <img className='loginImage' src={thundergoose} alt='starmole' />
           <h1 className='title'>CodersOnly</h1>
         </div>
         <input
@@ -66,6 +69,9 @@ const Login = (props) => {
             Sign Up
           </button>
         </div>
+        {toggleWrongLogin && (
+          <p className='wrongLogin'>WRONG ID OR PW PLEASE TRY AGAIN!</p>
+        )}
       </div>
     </div>
   );
