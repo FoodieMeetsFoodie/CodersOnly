@@ -128,37 +128,37 @@ const DailyProblem = (props) => {
         <ol>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args1[0]
-      )}</li> <li>Answer:${
+      )}</li> <li>Answer: ${
           prompts[number].args1[1]
-        }</li> <li>Your Result:${result1}</li></ul>
+        }</li> <li>Your Result: ${result1}</li></ul>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args2[0]
-      )}</li> <li>Answer:${
+      )}</li> <li>Answer: ${
           prompts[number].args2[1]
-        }</li> <li>Your Result:${result2}</li></ul>
+        }</li> <li>Your Result: ${result2}</li></ul>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args3[0]
-      )}</li> <li>Answer:${
+      )}</li> <li>Answer: ${
           prompts[number].args3[1]
-        }</li> <li>Your Result:${result3}</li></ul></ol>`;
+        }</li> <li>Your Result: ${result3}</li></ul></ol>`;
       } else {
         document.getElementById('result').innerHTML = `Wow that's right!
         <ol>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args1[0]
-      )}</li> <li>Answer:${
+      )}</li> <li>Answer: ${
           prompts[number].args1[1]
-        }</li> <li>Your Result:${result1}</li></ul>
+        }</li> <li>Your Result: ${result1}</li></ul>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args2[0]
       )}</li> <li>Answer:${
           prompts[number].args2[1]
-        }</li> <li>Your Result:${result2}</li></ul>
+        }</li> <li>Your Result: ${result2}</li></ul>
       <li><ul><li>Arguments: ${JSON.stringify(
         prompts[number].args3[0]
-      )}</li> <li>Answer:${
+      )}</li> <li>Answer: ${
           prompts[number].args3[1]
-        }</li> <li>Your Result:${result3}</li></ul></ol>`;
+        }</li> <li>Your Result: ${result3}</li></ul></ol>`;
       }
       setRun(false);
     }
@@ -175,21 +175,18 @@ const DailyProblem = (props) => {
       <Navbar />
       <div id='daily'>
         <div id='problem'>
-          <div id='prompt-box'>
-            <p id='prompt'></p>
-            <textarea
-              id='prompt-text'
-              onChange={(e) => setCode(e.target.value)}
-            ></textarea>
-            <button id='run-code' onClick={() => setRun(true)}>
-              Run Code
-            </button>
-          </div>
+          <p id='prompt'></p>
+          <textarea
+            id='prompt-text'
+            onChange={(e) => setCode(e.target.value)}
+          ></textarea>
+          <button id='run-code' onClick={() => setRun(true)}>
+            Run Code
+          </button>
         </div>
         <div id='result-box'>
           <p id='result'></p>
         </div>
-        <div id='solution-board'></div>
       </div>
     </div>
   );
