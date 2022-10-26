@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MatchesItem from './components/MatchesItem';
 import Navbar from './components/NavBar';
 import './stylesheets/Matches.css';
+import Chat from './components/Chat.js';
 const Matches = (props) => {
   const [userMatches, setUserMatches] = useState([]);
 
@@ -28,6 +29,7 @@ const Matches = (props) => {
 
   return (
     <div>
+      <Chat currUser={props.currUser} />
       <Navbar />
       <h1 className='MyMatches'>My Matches</h1>
       <div className='MainMatchesContainer'>{userMatches}</div>
