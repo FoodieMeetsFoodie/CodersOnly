@@ -5,11 +5,13 @@ import axios from 'axios';
 
 const ChatBoxModal = (props) => {
     const [msgs, setMsgs] = useState();
+    const [currentUser, setCurrentUser] = useState();
+    const token = JSON.parse(localStorage.getItem('token'));
 
     useEffect(() => {
         async function getMsgs() {
             // will be making await calls using axios to backend - passing down to model as messages prop
-            axios.get('http://localhost:8080/api/messages/dummymessage')
+            axios.get('/api/messages/dummymessage')
             .then(response => {
                 const newArr = response.data.map(el => {
                     return <Messages message={el.message} />
@@ -21,6 +23,18 @@ const ChatBoxModal = (props) => {
         getMsgs()
     }, []);
 
+    async function sendMsgs() {
+        const user1 = await axios.get(`/api/${token}`)
+        await axios.post('api/messages', {
+            user_1: user1.data.username,
+            user_2: props.name,
+            messageText: document.querySelector('.forMsg').value
+        })
+        document.querySelector('.forMsg').value = ''
+        console.log(document.querySelector('.forMsg').value)
+    }
+
+    
     if (!props.show) return null
     return ( 
         <div className="ModalContainer">
@@ -28,7 +42,7 @@ const ChatBoxModal = (props) => {
             <div className="msgDisplay">{msgs}</div>
             <input name='forChat' type='text' placeholder='Send Your Message...' className="forMsg"></input>
             <button onClick={props.close} className="closeButton">X</button>
-            <button onClick={props.close} className="sendButton"><span className="sendButtonSpan">Send</span></button>
+            <button onClick={sendMsgs} className="sendButton"><span className="sendButtonSpan">Send</span></button>
         </div>
     )
 }
