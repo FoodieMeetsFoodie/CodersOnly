@@ -2,8 +2,6 @@ CREATE TABLE users (
 	user_id SERIAL PRIMARY KEY,
 	username varchar(25) NOT NULL UNIQUE,
 	password varchar(25) NOT NULL,
-	first_name varchar(25), 
-	last_name varchar(25),
 	age int NOT NULL, 
 	location varchar(25) NOT NULL,
 	proglang varchar(25) NOT NULL,	
@@ -23,6 +21,8 @@ CREATE TABLE participants (
 	user_id int NOT NULL,
 	chat_room_id int NOT NULL
 );
+
+
 
 CREATE TABLE chats (
 	chat_id SERIAL PRIMARY KEY

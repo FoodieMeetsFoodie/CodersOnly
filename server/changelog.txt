@@ -4,3 +4,9 @@ oldValue --> newValue:
 
 /api/verification --> /api/auth
 /api/friends --> /api/functions/friends
+
+
+Matches function will need to call
+/api/matches -> {
+    userId: 
+}
