@@ -63,6 +63,44 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+userController.updateUser = async(req, res, next) => {
+
+    try {
+      const { username } = req.params;
+      const {
+        age,
+        location,
+        comment,
+        proglang,
+        url
+      } = req.body;
+
+      const updateObj = {
+        $set: {
+          age: age,
+          location: location,
+          comment: comment,
+          proglang: proglang,
+          url: url
+        }
+      }
+
+      res.locals.user = await User.updateOne({username}, updateObj).exec();
+      return next();
+
+    }
+    catch (err) {
+      return next({
+          log: `controller.js: ERROR: ${err}`,
+          status: 400,
+          message: {
+          err: 'An error occurred in userController.updateUser. Check server logs for more details',
+          },
+      });
+    }
+
+}
+
 module.exports = userController;
 
 ////////////// SEQUEL CONVERSIONS BELOW //////////////
