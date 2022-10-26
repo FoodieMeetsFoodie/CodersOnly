@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const port = 3000;
 const apiRouter = require('./api.js');
+const cookieParser = require('cookie-parser');
 
 mongoose.connect(
   'mongodb+srv://pantlessgeese:ilovecodesmith@cluster0.6pxbm3q.mongodb.net/?retryWrites=true&w=majority'
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/api', apiRouter);
 

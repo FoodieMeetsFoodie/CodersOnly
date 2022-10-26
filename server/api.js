@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
 
+router.get('/checkSession', controller.isLoggedIn, (req, res) => {
+  return res.status(200).json(res.locals.sessionFound);
+});
+
 router.post('/verification', controller.verifyUser, (req, res) => {
   return res.status(201).json(res.locals.userExists);
 });
