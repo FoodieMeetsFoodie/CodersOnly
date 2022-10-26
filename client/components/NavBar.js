@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../stylesheets/NavBar.css';
 import { Link, Navigate } from 'react-router-dom';
-import Mole from '../assets/Star-nosed-mole.png';
+import thundergoose from '../assets/thundergoose.png';
 
 const Navbar = (props) => {
   //the way each user profile will look in the feed
@@ -17,7 +17,7 @@ const Navbar = (props) => {
           </Link>
         </div>
         <div className='mascot'>
-          <img className='navBarImage' src={Mole} alt='starmole' />
+          <img className='navBarImage' src={thundergoose} alt='starmole' />
           <h1>CodersOnly</h1>
         </div>
         <div className='navBtnDiv'>

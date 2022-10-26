@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 55px;
+  margin-right: 70px;
 }
 
 .LoginBox {
@@ -68,7 +68,7 @@ body {
 
 .loginImage {
   width: auto;
-  height: 85px;
+  height: 140px;
 }
 /* Animations for Buttons */
 .loginButtons,
@@ -175,6 +175,11 @@ body {
     height: 45px;
     line-height: 20px;
   }
+}
+
+.wrongLogin {
+  color: red;
+  font-size: 20px;
 }
 
 /*
