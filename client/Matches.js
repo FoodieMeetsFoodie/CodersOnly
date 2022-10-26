@@ -28,7 +28,7 @@ const Matches = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar removeToken={props.removeToken}/>
       <h1 className='MyMatches'>My Matches</h1>
       <div className='MainMatchesContainer'>{userMatches}</div>
     </div>

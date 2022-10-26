@@ -9,6 +9,7 @@
   height: 10%;
   box-shadow: none;
   border-bottom: 2px solid black;
+  padding-top: 20px;
 }
 .mascot {
   font-family: 'DejaVu Sans Mono', sans-serif;
@@ -80,4 +81,8 @@
 .navBtn:hover:after {
   bottom: 2px;
   left: 2px;
+}
+
+.navBtnDiv {
+  padding-top: 100px;
 }
