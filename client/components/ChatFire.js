@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import db from '../firebase';
 import SendMessage from './SendMessage';
+import '../stylesheets/ChatFire.css';
 
 const Chat = (props) => {
   const [messages, setMessages] = useState([]);
@@ -19,7 +20,7 @@ const Chat = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="fire-chat">
       {messages.map(({ id, text, createdAt }) => {
         return (
           <div key={createdAt}>

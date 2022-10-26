@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import db from '../firebase';
+import '../stylesheets/ChatFire.css';
 
 function SendMessage(props) {
   const [msg, setMsg] = useState('');
@@ -32,7 +33,9 @@ function SendMessage(props) {
             
           placeholder='...message'
         ></input>
-        <button type='submit'>Send</button>
+        <button className="msg-btn" type="submit">
+          Send
+        </button>
       </form>
     </div>
   );
