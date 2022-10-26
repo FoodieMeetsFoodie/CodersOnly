@@ -154,4 +154,16 @@ controller.isLoggedIn = async (req, res, next) => {
   next();
 };
 
+controller.logOut = async (req, res, next) => {
+  try {
+    const { _id } = await User.findOne({ username: req.params.id });
+    const result = await Session.findOneAndDelete({ cookieId: _id });
+  } catch {
+    next({
+      log: 'log out controller error',
+      message: { err: 'unable to logout' },
+    });
+  }
+};
+
 module.exports = controller;

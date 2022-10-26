@@ -34,3 +34,50 @@
   font-family: 'DejaVu Sans Mono', sans-serif;
   text-align: center;
 }
+
+.logOutBtn {
+  background-color: #3dd1e7;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 12px;
+  font-weight: 700;
+  justify-content: center;
+  position: absolute;
+  top: 160;
+  right: 720;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 40px;
+  height: 40px;
+  max-width: 460px;
+  cursor: pointer;
+  transform: rotate(365deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.logOutBtn:focus {
+  outline: 0;
+}
+
+.logOutBtn:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+.logOutBtn:hover:after {
+  bottom: 2px;
+  left: 2px;
+}

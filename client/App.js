@@ -9,6 +9,7 @@ import Matches from './Matches';
 
 //imported stylesheet
 import './stylesheets/style.css';
+import DailyProblem from './components/dailyProblem.jsx';
 
 //rendering profile here just for now before we add routers
 const App = () => {
@@ -39,10 +40,17 @@ const App = () => {
         path='/Feed'
         element={<Feed currUser={currUser} allUsers={allUsers} />}
       />
-      <Route path='/Profile' element={<Profile currUser={currUser} />} />
+      <Route
+        path='/Profile'
+        element={<Profile currUser={currUser} setCurrUser={setCurrUser} />}
+      />
       <Route
         path='/Matches'
         element={<Matches currUser={currUser} allUsers={allUsers} />}
+      />
+      <Route
+        path='/Daily'
+        element={<DailyProblem currUser={currUser} allUsers={allUsers} />}
       />
     </Routes>
   );

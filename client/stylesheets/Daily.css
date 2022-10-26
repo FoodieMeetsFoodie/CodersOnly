@@ -1,0 +1,122 @@
+@import url('http://fonts.cdnfonts.com/css/dejavu-sans-mono');
+#daily-container {
+  display: flex;
+  flex-direction: column;
+}
+#daily {
+  display: grid;
+  grid-template-areas:
+    'prob solu'
+    'prob solu';
+}
+
+#problem {
+  grid-area: 'prob';
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+#prompt-text {
+  border-style: none;
+  background-color: midnightblue;
+  color: yellow;
+  max-height: 400px;
+  max-width: 600px;
+  min-width: 600px;
+  min-height: 400px;
+  height: 400px;
+  width: 600px;
+}
+
+#result {
+  background-color: aliceblue;
+  border-radius: 20px;
+  border-style: double;
+  max-height: 400px;
+  max-width: 400px;
+  height: 400;
+  width: 400px;
+  padding: 30px;
+  margin: 30px;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#result-box {
+  grid-area: 'solu';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}
+#run-code {
+  max-width: 100px;
+  justify-self: end;
+}
+
+#prompt {
+  border: 5px;
+  border-style: double;
+  text-align: center;
+  height: 400px;
+  width: 600px;
+  max-width: 600px;
+  background-color: aliceblue;
+  height: auto;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+#run-code {
+  font-family: 'DejaVu Sans Mono', sans-serif;
+  margin: 0 10px;
+  background-color: #3dd1e7;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #000000;
+  display: flex;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 14px;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.75rem 1.65rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none #000000 solid;
+  text-decoration-thickness: auto;
+  width: 250px;
+  height: auto;
+  max-width: 460px;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#run-code:focus {
+  outline: 0;
+}
+
+#run-code:after {
+  content: '';
+  position: absolute;
+  border: 1px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+}
+
+#run-code:hover:after {
+  bottom: 2px;
+  left: 2px;
+}
