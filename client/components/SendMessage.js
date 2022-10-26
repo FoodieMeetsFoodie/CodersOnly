@@ -26,7 +26,7 @@ function SendMessage(props) {
         <input
           value={blank}
           onChange={(e) => {
-            let newText = e.target.value.replace(/\bshit|fuck|bitch|create +react +app\b/gi, "🧐🧐🧐🧐");
+            let newText = e.target.value.replace(/\bshit|fuck|bitch|create +react +app| hate +javascript|hate +codesmith\b/gi, " 🧐🧐🧐🧐");
             setMsg(newText);
             setBlank(e.target.value)}}
             
