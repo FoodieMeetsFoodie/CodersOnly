@@ -1,5 +1,6 @@
 import React from 'react';
 import '../stylesheets/MatchesItem.css';
+import Chat from './ChatFire';
 
 const MatchesItem = (props) => {
   // The way each user profile will look in the feed
@@ -9,6 +10,7 @@ const MatchesItem = (props) => {
   const { username, age, location, comment, proglang, url } = props.user;
   return (
     <div className='matchesContainer'>
+      <Chat currUser={props.currUser} />
       <div className='username'>
         <h3 id='userName'>{username}</h3>
       </div>

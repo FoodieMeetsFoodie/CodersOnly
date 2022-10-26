@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import MatchesItem from './components/MatchesItem';
 import Navbar from './components/NavBar';
 import './stylesheets/Matches.css';
-import Chat from './components/Chat.js';
+import Chat from './components/ChatFire.js';
 const Matches = (props) => {
   const [userMatches, setUserMatches] = useState([]);
 
@@ -20,7 +20,9 @@ const Matches = (props) => {
             return true;
         });
         const matchesItemsArr = matchesArr.map((el) => {
-          return <MatchesItem key={el._id} user={el} />;
+          return (
+            <MatchesItem key={el._id} user={el} currUser={props.currUser} />
+          );
         });
 
         setUserMatches(matchesItemsArr);
@@ -29,7 +31,6 @@ const Matches = (props) => {
 
   return (
     <div>
-      <Chat currUser={props.currUser} />
       <Navbar />
       <h1 className='MyMatches'>My Matches</h1>
       <div className='MainMatchesContainer'>{userMatches}</div>
