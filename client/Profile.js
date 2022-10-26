@@ -30,7 +30,7 @@ const Profile = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar removeToken={props.removeToken} />
       <div className='profilePage'>
         <div className='profileContainer'>
           <div className='username'>

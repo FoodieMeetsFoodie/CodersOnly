@@ -5,6 +5,7 @@ import UpdateProfile from './components/UpdateProfile';
 import Feed from './Feed';
 import Login from './Login.js';
 import Matches from './Matches';
+import useToken from './useToken';
 import Profile from './Profile';
 import SignUp from './SignUp';
 
@@ -13,8 +14,11 @@ import './stylesheets/style.css';
 
 //rendering profile here just for now before we add routers
 const App = () => {
-  const [currUser, setCurrUser] = useState(false);
+  const { setToken, removeToken } = useToken();
+  const token = JSON.parse(localStorage.getItem('token'));
+  const [currUser, setCurrUser] = useState(token);
   const [allUsers, setAllUsers] = useState([]);
+
 
   useEffect(() => {
     const { data } = axios.get('api/messages/dummymessage');
@@ -25,20 +29,38 @@ const App = () => {
       });
   }, []);
 
+  if (!token) {
+    return(
+
+      <Routes>
+        <Route exact path="/" element={<Login setCurrUser={setCurrUser} setToken={setToken} currUser={currUser} />} />
+        <Route exact path='/Feed' element={<Login setToken={setToken} /> } />
+        <Route exact path='/Matches' element={<Login setToken={setToken} /> } />
+        <Route exact path="/Profile" element={<Login setToken={setToken} /> } />
+      </Routes>
+
+    ) 
+  }
+
   return (
+    
     <Routes>
+      {/*<Route
+        path='/'
+        element={<Login setCurrUser={setCurrUser} setToken={setToken} currUser={currUser} />}
+        />*/}
       <Route
-        path="/"
-        element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
+        exact path='/'
+        element={<Feed setCurrUser={setCurrUser} removeToken={removeToken} currUser={currUser} allUsers={allUsers} />}
       />
       <Route
-        path="/Feed"
-        element={<Feed currUser={currUser} allUsers={allUsers} />}
+        exact path='/Feed'
+        element={<Feed setCurrUser={setCurrUser} removeToken={removeToken} currUser={currUser} allUsers={allUsers} />}
       />
-      <Route path="/Profile" element={<Profile currUser={currUser} />} />
+      <Route exact path='/Profile' element={<Profile removeToken={removeToken} currUser={currUser} />} />
       <Route
-        path="/Matches"
-        element={<Matches currUser={currUser} allUsers={allUsers} />}
+        exact path='/Matches'
+        element={<Matches currUser={currUser} removeToken={removeToken} allUsers={allUsers} />}
       />
     </Routes>
   );
