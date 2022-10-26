@@ -3,12 +3,16 @@ const router = express.Router();
 const controller = require('./controller');
 
 router.post('/verification', controller.verifyUser, (req, res) => {
-  return res.status(201).json(res.locals.userExists);
+  return res.status(201).json(res.locals.userInfo);
 });
 
 router.post('/', controller.createUser, (req, res) => {
-  return res.status(201).json(res.locals.user);
+  return res.status(201).json(res.locals.userId);
 });
+
+router.post('/:id/createProfile', controller.createProfile, (req, res) => {
+  return res.status(201).json(res.locals.userInfo);
+})
 
 //get data from all users stored in database
 router.get('/friends', controller.getFriends, (req, res) => {

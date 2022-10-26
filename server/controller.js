@@ -1,31 +1,20 @@
-const User = require('./userModel');
+const { mode } = require('../webpack.config');
+const models = require('./userModel');
 
 const controller = {};
 
 controller.createUser = async (req, res, next) => {
+  const id = Math.floor(Math.random()*100000)
   try {
     const {
       username,
       password,
-      age,
-      location,
-      proglang,
-      comment,
-      matches,
-      url,
     } = req.body;
     if (typeof username !== 'string')
       throw new Error('username should be a string');
-    res.locals.user = await User.create({
-      username,
-      password,
-      age,
-      location,
-      proglang,
-      comment,
-      matches,
-      url,
-    });
+    const text = `insert into user_login values (${id}, '${username}', '${password}', ${id})`;
+    await models.query(text);
+    res.locals.userId = id;
     return next();
   } catch (err) {
     return next({
@@ -38,6 +27,31 @@ controller.createUser = async (req, res, next) => {
   }
 };
 
+controller.createProfile = async (req, res, next) => {
+  const {id} = req.params
+  try{
+    const {
+      age,
+      location,
+      prolang,
+      comment,
+      url,
+      name,
+    } = req.body
+    const text = `insert into user_info values (${id}, ${age}, '${location}', '${prolang}', '${comment}', '${url}', ${id}, '${name}')`;
+    res.locals.userInfo = await models.query(text);
+    return next();   
+  }
+  catch (err) {
+    return next({
+      log: `controller.js: ERROR: ${err}`,
+      status: 400,
+      message: {
+        err: 'An error occurred in controller.createProfile. Check server logs for more details',
+      },
+    });
+  }
+}
 // change functionality to be for all instances of matches with value of not 'no' (or 'yes' and null)
 controller.getUser = async (req, res, next) => {
   try {
@@ -76,11 +90,16 @@ controller.getUser = async (req, res, next) => {
 controller.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    const found = await User.findOne({
-      username: username,
-      password: password,
-    });
-    found ? (res.locals.userExists = true) : (res.locals.userExists = false);
+    const text = `select * from user_login where username='${username}' and password='${password}'`;
+    const userInDb = await models.query(text)
+    const dbId = userInDb.rows[0].user_id
+    if(userInDb){
+      const text = `select age, location, prolang, comment, url, name from user_info where user_id = ${dbId}`;
+      const userInDbInfo = await models.query(text)
+      // console.log(userInDbInfo.rows)
+      res.locals.userInfo = userInDbInfo.rows[0]
+    }
+    //found ? (res.locals.userExists = true) : (res.locals.userExists = false);
     return next();
   } catch (err) {
     return next({
@@ -139,5 +158,6 @@ controller.updateUserMatches = async (req, res, next) => {
     });
   }
 };
+
 
 module.exports = controller;
