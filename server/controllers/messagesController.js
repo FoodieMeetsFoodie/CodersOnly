@@ -43,8 +43,35 @@ messagesController.postMessage = async (req, res, next) => {
 messagesController.getMessages = async (req, res, next) => {
   try {
     const { user_1, user_2 } = req.body;
-    const queryString = 'SELECT * FROM messages WHERE user_';
+    const getChatId = '';
+    const postMessageQuery = 'INSERT INTO messages (chat)';
   } catch (error) {}
 };
 
-// chat_ids are named with participants
+messagesController.getDummyMsg = async (req, res, next) => {
+  console.log('HERE');
+  try {
+    res.locals.message = [
+      {
+        userId: 1,
+        message: 'I am the best OW2 player ever',
+      },
+      {
+        userId: 2,
+        message: 'no u actually suck',
+      },
+    ];
+
+    return next();
+  } catch (err) {
+    return next({
+      log: `messages.dummyMessage: ERROR: ${err}`,
+      status: 400,
+      message: {
+        err: 'An error occurred in messages.dummyMessage. Check server logs for more details',
+      },
+    });
+  }
+};
+
+module.exports = messagesController;

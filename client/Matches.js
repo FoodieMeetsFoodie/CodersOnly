@@ -21,7 +21,6 @@ const Matches = (props) => {
         const matchesItemsArr = matchesArr.map((el) => {
           return <MatchesItem key={el._id} user={el} />;
         });
-
         setUserMatches(matchesItemsArr);
       });
   }, []);

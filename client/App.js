@@ -1,11 +1,12 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import Login from './Login.js';
-import SignUp from './SignUp';
-import Profile from './Profile';
-import Feed from './Feed';
 import UpdateProfile from './components/UpdateProfile';
+import Feed from './Feed';
+import Login from './Login.js';
 import Matches from './Matches';
+import Profile from './Profile';
+import SignUp from './SignUp';
 
 //imported stylesheet
 import './stylesheets/style.css';
@@ -16,6 +17,7 @@ const App = () => {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(() => {
+    const { data } = axios.get('api/messages/dummymessage');
     fetch('/api/friends')
       .then((response) => response.json())
       .then((data) => {
@@ -26,16 +28,16 @@ const App = () => {
   return (
     <Routes>
       <Route
-        path='/'
+        path="/"
         element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
       />
       <Route
-        path='/Feed'
+        path="/Feed"
         element={<Feed currUser={currUser} allUsers={allUsers} />}
       />
-      <Route path='/Profile' element={<Profile currUser={currUser} />} />
+      <Route path="/Profile" element={<Profile currUser={currUser} />} />
       <Route
-        path='/Matches'
+        path="/Matches"
         element={<Matches currUser={currUser} allUsers={allUsers} />}
       />
     </Routes>
