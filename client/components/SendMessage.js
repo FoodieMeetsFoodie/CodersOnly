@@ -25,13 +25,14 @@ function SendMessage(props) {
     <div>
       <form onSubmit={sendMessage}>
         <input
+          classname='msg_input'
           value={blank}
           onChange={(e) => {
             let newText = e.target.value.replace(/\bshit|fuck|bitch|create +react +app| hate +javascript|hate +codesmith\b/gi, " 🧐🧐🧐🧐");
             setMsg(newText);
             setBlank(e.target.value)}}
             
-          placeholder='...message'
+          placeholder='...type your message'
         ></input>
         <button className="msg-btn" type="submit">
           Send
