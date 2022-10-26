@@ -12,7 +12,7 @@
   padding-bottom: 60px;
 }
 
-.feedBtns {
+/* .feedBtns { --> this is for the old buttons on feed, no longer needed
   display: flex;
   gap: 10px;
 }
@@ -33,4 +33,4 @@
   cursor: pointer;
   margin-top: 20px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
+} */
