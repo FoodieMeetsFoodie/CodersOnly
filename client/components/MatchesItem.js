@@ -14,16 +14,10 @@ const MatchesItem = (props) => {
   //each props.user is currently a unique user object
   useEffect(() => {
     console.log(props.user)
-
   }, []);
   
   const modalDisplay = e => {
     showModal(!modal)
-  }
-  async function getMsgs() {
-    // will be making await calls using axios to backend - passing down to model as messages prop
-    const {data} = await axios.get('http://localhost:8080/api/messages/dummymessage')
-    console.log(data);
   }
 
 
@@ -41,7 +35,7 @@ const MatchesItem = (props) => {
       <p className='userDetail'>Bio: {comment}</p>
       <p className='userDetail'>Programming Language: {proglang}</p>
       <button onClick={modalDisplay}>slideInto{username}DMs()</button>
-      <ChatBoxModal show={modal} close={modalDisplay} name={username} getmsgs={getMsgs} />
+      <ChatBoxModal show={modal} close={modalDisplay} name={username} pic={url} />
     </div>
   );
 };

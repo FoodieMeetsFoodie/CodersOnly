@@ -8,8 +8,9 @@ messagesController.postMessage = async (req, res, next) => {
     let chatId = '';
 
     const getChatIdQuery =
-      'SELECT chat_id FROM chats WHERE user_1 = $1 AND user_2 = $2 OR user_1 = $2 AND user_2 = $1 ;';
+      'SELECT chat_id FROM chats WHERE (user_1 = $1 AND user_2 = $2) OR (user_1 = $2 AND user_2 = $1);';
     let values = [user_1, user_2];
+    console.log('VALUES', values);
     const { rows } = await db.query(getChatIdQuery, values);
     console.log('postMsg getChatID:', rows[0]);
 
@@ -49,7 +50,7 @@ messagesController.getMessages = async (req, res, next) => {
 
     let chatId = '';
     const getChatIdQuery =
-      'SELECT chat_id FROM chats WHERE user_1 = $1 AND user_2 = $2;';
+      'SELECT chat_id FROM chats WHERE (user_1 = $1 AND user_2 = $2) OR (user_1 = $2 AND user_2 = $1);';
     let values = [user_1, user_2];
     const { rows } = await db.query(getChatIdQuery, values);
     console.log('postMsg getChatID:', rows[0]);
