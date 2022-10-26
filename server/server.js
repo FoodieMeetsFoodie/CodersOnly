@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
 const port = 3000;
 const apiRouter = require('./api.js');
 
-mongoose.connect(
-  'mongodb+srv://jchen0903:ilovecodesmith@cluster0.wjuijhf.mongodb.net/FoodTinder?retryWrites=true&w=majority'
-);
+
 
 //added this bc axios issues
 app.use((req, res, next) => {
