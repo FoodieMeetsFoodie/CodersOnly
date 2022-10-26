@@ -26,12 +26,14 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api', apiRouter);
+
 
 // TODO: Turn on once backend has been refactored
 // app.use('/api/functions', functionRouter);
-// app.use('/api/auth', apiRouter);
-// app.use('/api/users', apiRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
+
+// app.use('/api', apiRouter);
 
 app.use((err, req, res, next) => {
   const defaultErr = {
