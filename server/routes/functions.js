@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('./controller');
+const controller = require('../controller');
 
 router.get('/friends', controller.getFriends, (req, res) => {
   return res.status(200).json(res.locals.friends);
