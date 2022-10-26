@@ -4,7 +4,6 @@ const models = require('./userModel');
 const controller = {};
 
 controller.createUser = async (req, res, next) => {
-  const id = Math.floor(Math.random()*100000)
   try {
     const {
       username,
@@ -12,9 +11,13 @@ controller.createUser = async (req, res, next) => {
     } = req.body;
     if (typeof username !== 'string')
       throw new Error('username should be a string');
-    const text = `insert into user_login values (${id}, '${username}', '${password}', ${id})`;
+    const text = `insert into user_login values (default, '${username}', '${password}', default, default)`;
     await models.query(text);
+    const findId = await models.query(`select user_id from user_login where username = '${username}'`);
+    console.log(findId)
+    const id = findId.rows[0].user_id;
     res.locals.userId = id;
+    // console.log(id)
     return next();
   } catch (err) {
     return next({
@@ -29,6 +32,7 @@ controller.createUser = async (req, res, next) => {
 
 controller.createProfile = async (req, res, next) => {
   const {id} = req.params
+  // console.log(id);
   try{
     const {
       age,
@@ -38,8 +42,9 @@ controller.createProfile = async (req, res, next) => {
       url,
       name,
     } = req.body
-    const text = `insert into user_info values (${id}, ${age}, '${location}', '${prolang}', '${comment}', '${url}', ${id}, '${name}')`;
-    res.locals.userInfo = await models.query(text);
+    const text = `insert into user_info values (${id}, '${name}', ${age}, '${location}', '${prolang}', '${comment}', '${url}', ${id})`;
+    await models.query(text)
+    res.locals.userInfo = req.body;
     return next();   
   }
   catch (err) {
@@ -98,8 +103,9 @@ controller.verifyUser = async (req, res, next) => {
       const userInDbInfo = await models.query(text)
       // console.log(userInDbInfo.rows)
       res.locals.userInfo = userInDbInfo.rows[0]
+      console.log('res', res.locals.userInfo)
     }
-    //found ? (res.locals.userExists = true) : (res.locals.userExists = false);
+    // found ? (res.locals.userExists = true) : (res.locals.userExists = false);
     return next();
   } catch (err) {
     return next({

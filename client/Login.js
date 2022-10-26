@@ -22,6 +22,7 @@ const Login = (props) => {
       body: JSON.stringify({ username: id, password: pw }),
     })
       .then((data) => {
+        console.log(data)
         return data.json();
       })
       .then((data) => {
