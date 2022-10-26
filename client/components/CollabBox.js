@@ -2,6 +2,7 @@ import React from 'react';
 import '../stylesheets/CollabBox.css';
 import Chat from './ChatFire';
 import CodingCollab from './CodingCollab';
+import Prompts from './Prompts';
 
 const CollabBox = (props) => {
   return props.trigger ? (
@@ -14,7 +15,7 @@ const CollabBox = (props) => {
           X
         </button>
         <div className="chat-container">
-          {/* <Prompts /> */}
+          <Prompts />
           <CodingCollab />
           <Chat currUser={props.currUser} friend={props.friend} />
         </div>

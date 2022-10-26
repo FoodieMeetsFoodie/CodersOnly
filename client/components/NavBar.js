@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../stylesheets/NavBar.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Mole from '../assets/Star-nosed-mole.png';
 
-const Navbar = () => {
+const Navbar = (props) => {
   //the way each user profile will look in the feed
   return (
     <header>
       <nav className='navBar'>
-        <Link to='/Profile'>
-          <button className='navBtn'>console.log(myProfile)</button>
-        </Link>
+        <div>
+          <Link to='/Profile'>
+            <button className='navBtn'>console.log(myProfile)</button>
+          </Link>
+          <Link to='/Daily'>
+            <button className='navBtn'>function dailyProblem()</button>
+          </Link>
+        </div>
         <div className='mascot'>
           <img className='navBarImage' src={Mole} alt='starmole' />
           <h1>CodersOnly</h1>

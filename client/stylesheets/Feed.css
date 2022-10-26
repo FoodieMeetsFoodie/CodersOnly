@@ -12,25 +12,4 @@
   padding-bottom: 60px;
 }
 
-.feedBtns {
-  display: flex;
-  gap: 10px;
-}
 
-.feedBtns button {
-  width: 100px;
-  height: 30px;
-  border: none;
-  outline: none;
-  background: #2f2f2f;
-  color: #fff;
-  font-size: 18px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  margin-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}

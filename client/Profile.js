@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import './stylesheets/Profile.css';
 
@@ -13,6 +13,23 @@ const Profile = (props) => {
     comment: null,
     proglang: null,
   });
+
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  const logOutHandler = () => {
+    setLoginStatus(true);
+    props.setCurrUser(false);
+    fetch(`/api/${props.currUser}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log('user', props.currUser);
+        window.location.reload();
+      });
+  };
 
   useEffect(() => {
     fetch(`/api/${props.currUser}`)
@@ -30,11 +47,15 @@ const Profile = (props) => {
 
   return (
     <div>
-      <Navbar />
+      {loginStatus && <Navigate to='/' />}
+      <Navbar currUser={props.currUser} setCurrUser={props.setCurrUser} />
       <div className='profilePage'>
         <div className='profileContainer'>
           <div className='username'>
             <h1>{username}</h1>
+            <button className='logOutBtn' onClick={logOutHandler}>
+              Log Out
+            </button>
           </div>
           <img className='profileImage' src={url} alt='profileImage' />
           <p className='userDetail'>Age: {age}</p>

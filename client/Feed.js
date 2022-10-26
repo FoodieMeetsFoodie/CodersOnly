@@ -67,11 +67,7 @@ const Feed = (props) => {
             setCurrIndex={setCurrIndex}
           />
         )}
-        <FeedItem user={currUserFeed[currIndex]} />
-        <div className='feedBtns'>
-          <button onClick={yesHandler}>Yes</button>
-          <button onClick={noHandler}>No</button>
-        </div>
+        <FeedItem user={currUserFeed[currIndex]} yes={yesHandler} no={noHandler} />
       </div>
     </div>
   );
