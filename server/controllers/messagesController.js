@@ -80,7 +80,7 @@ messagesController.getMessages = async (req, res, next) => {
 messagesController.getDummyMsg = async (req, res, next) => {
   console.log('HERE');
   try {
-    res.locals.message = [
+    res.locals.messages = [
       {
         userId: 1,
         message: 'I am the best OW2 player ever',
