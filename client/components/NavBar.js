@@ -8,9 +8,14 @@ const Navbar = (props) => {
   return (
     <header>
       <nav className='navBar'>
-        <Link to='/Profile'>
-          <button className='navBtn'>console.log(myProfile)</button>
-        </Link>
+        <div>
+          <Link to='/Profile'>
+            <button className='navBtn'>console.log(myProfile)</button>
+          </Link>
+          <Link to='/Daily'>
+            <button className='navBtn'>function dailyProblem()</button>
+          </Link>
+        </div>
         <div className='mascot'>
           <img className='navBarImage' src={Mole} alt='starmole' />
           <h1>CodersOnly</h1>

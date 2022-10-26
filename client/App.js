@@ -9,6 +9,7 @@ import Matches from './Matches';
 
 //imported stylesheet
 import './stylesheets/style.css';
+import DailyProblem from './components/dailyProblem.jsx';
 
 //rendering profile here just for now before we add routers
 const App = () => {
@@ -46,6 +47,10 @@ const App = () => {
       <Route
         path='/Matches'
         element={<Matches currUser={currUser} allUsers={allUsers} />}
+      />
+      <Route
+        path='/Daily'
+        element={<DailyProblem currUser={currUser} allUsers={allUsers} />}
       />
     </Routes>
   );
