@@ -2,9 +2,20 @@ import React from 'react';
 import '../stylesheets/NavBar.css';
 import { Link } from 'react-router-dom';
 import Mole from '../assets/Star-nosed-mole.png';
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   //the way each user profile will look in the feed
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    props.removeToken();
+    //props.setCurrUser("a");
+    //console.log(props.currUser)
+    window.location = '/';
+    //navigate('/Profile');
+  }
+
   return (
     <header>
       <nav className='navBar'>
@@ -21,6 +32,9 @@ const Navbar = () => {
           </Link>
           <Link to='/Matches'>
             <button className='navBtn'>if(match === true)</button>
+          </Link>
+          <Link>
+            <button onClick={handleClick} className='navBtn'>Log Out</button>
           </Link>
         </div>
       </nav>

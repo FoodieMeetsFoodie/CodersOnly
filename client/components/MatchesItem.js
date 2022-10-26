@@ -1,11 +1,34 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import '../stylesheets/MatchesItem.css';
+import ChatBoxModal from './ChatBoxModal';
 
 const MatchesItem = (props) => {
+  const [modal, showModal] = useState(false);
+  const [messages, setMessages] = useState()
+
   // The way each user profile will look in the feed
   if (!props.user) {
     return <p>You have no matches xD</p>;
   }
+  //each props.user is currently a unique user object
+  useEffect(() => {
+    console.log(props.user)
+
+  }, []);
+  
+  const modalDisplay = e => {
+    showModal(!modal)
+  }
+  async function getMsgs() {
+    // will be making await calls using axios to backend - passing down to model as messages prop
+    const {data} = await axios.get('http://localhost:8080/api/messages/dummymessage')
+    console.log(data);
+  }
+
+
+
+
   const { username, age, location, comment, proglang, url } = props.user;
   return (
     <div className='matchesContainer'>
@@ -17,7 +40,8 @@ const MatchesItem = (props) => {
       <p className='userDetail'>Location: {location}</p>
       <p className='userDetail'>Bio: {comment}</p>
       <p className='userDetail'>Programming Language: {proglang}</p>
-      <button>slideInto{username}DMs()</button>
+      <button onClick={modalDisplay}>slideInto{username}DMs()</button>
+      <ChatBoxModal show={modal} close={modalDisplay} name={username} getmsgs={getMsgs} />
     </div>
   );
 };

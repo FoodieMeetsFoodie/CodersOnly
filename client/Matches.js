@@ -21,14 +21,13 @@ const Matches = (props) => {
         const matchesItemsArr = matchesArr.map((el) => {
           return <MatchesItem key={el._id} user={el} />;
         });
-
         setUserMatches(matchesItemsArr);
       });
   }, []);
 
   return (
     <div>
-      <Navbar />
+      <Navbar removeToken={props.removeToken}/>
       <h1 className='MyMatches'>My Matches</h1>
       <div className='MainMatchesContainer'>{userMatches}</div>
     </div>

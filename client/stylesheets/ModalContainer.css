@@ -1,0 +1,80 @@
+.ModalContainer {
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 40vh;
+    background: #c4fff9;
+    border: 4px solid rgb(0, 0, 0);
+    transition: 1.1s ease-out;
+    box-shadow: -2rem 2rem 2rem rgba(0,0,0, 0.2);
+    filter: blur(0);
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.chatWith {
+    font-family: 'DejaVu Sans Mono', sans-serif;
+}
+.msgDisplay {
+    background-color: rgba(0, 0, 255, 0.263);
+    height:27vh;
+    width:29.3vw;
+}
+.forMsg{
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    height:3.5vw;
+    width:23vw;
+    font-size: 25px;
+    font-family: 'DejaVu Sans Mono', sans-serif;
+    align-self: normal;
+}
+.closeButton {
+    align-self: flex-start;
+    right:0; /* new */
+    top: 0; /* new */
+    position: absolute; /* new */
+}
+.sendButton{
+    position: absolute;
+    right: 10;
+    bottom: 10;
+    background-image: linear-gradient(to right, #00c3ff60 0%, #21ccad 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #000000;
+    display: block;
+    height: 60px;
+    width: 4em;
+    font-size: 1.4em;
+    padding: 4px;
+    text-decoration: none;
+    z-index: 2;
+    margin-bottom: 2;
+    font-family: 'DejaVu Sans Mono', sans-serif;
+}
+.sendButton:hover{
+    color: #fff;
+}
+.sendButtonSpan{
+    align-items: center;
+    background: #17bad300;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    transition: background 0.5s ease;
+    width: 100%;
+}
+
+.sendButto:hover .sendButtonSpan {
+    background: transparent;
+}

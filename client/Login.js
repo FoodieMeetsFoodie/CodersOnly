@@ -3,33 +3,43 @@ import { Link, Navigate } from 'react-router-dom';
 import './stylesheets/Login.css';
 import SignUp from './SignUp.js';
 import Mole from './assets/Star-nosed-mole.png';
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   //is this state used?
   const [toggleSignUp, setToggleSignUp] = useState(false);
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
 
   const loginHandler = () => {
-    const id = document.getElementById('loginUsername').value;
-    const pw = document.getElementById('password').value;
-    console.log('id ' + id);
-    console.log('pw ' + pw);
+    // const id = document.getElementById('loginUsername').value;
+    // const pw = document.getElementById('password').value;
+    // console.log('id ' + id);
+    // console.log('pw ' + pw);
+    console.log(username);
+    console.log(password);
 
     fetch('/api/verification', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username: id, password: pw }),
+      body: JSON.stringify({ username: username, password: password }),
     })
       .then((data) => {
         return data.json();
       })
       .then((data) => {
         if (data) {
-          props.setCurrUser(id);
+
+          props.setCurrUser(username);
+          props.setToken(username);
+          navigate('/Feed');
         }
       });
   };
+
   if (toggleSignUp) {
     return <SignUp setToggleSignUp={setToggleSignUp} />;
   }
@@ -46,6 +56,7 @@ const Login = (props) => {
           type='text'
           placeholder='Username'
           id='loginUsername'
+          onChange={e => setUsername(e.target.value)}
         ></input>
         <input
           className='password'
@@ -53,6 +64,7 @@ const Login = (props) => {
           type='password'
           placeholder='Password'
           id='password'
+          onChange={e => setPassword(e.target.value)}
         ></input>
         <div className='LoginScreenButtons'>
           <button className='loginButtons' onClick={loginHandler}>
