@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development webpack-dev-server --open & nodemon server/server.js"
+    "dev": "NODE_ENV=development webpack-dev-server --open & nodemon server/server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -43,7 +44,9 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.2.2",
     "style-loader": "^3.3.1",
+    "supertest": "^6.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   }
