@@ -34,3 +34,20 @@
   font-family: 'DejaVu Sans Mono', sans-serif;
   text-align: center;
 }
+.updateProfile{
+  margin-bottom: 13px;
+}
+.profile-bio{
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #9ceaef;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 10px;
+  background-color: #09e5f518;
+  font-family:'DejaVu Sans Mono', sans-serif;
+}
+.forproglang{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -4,7 +4,7 @@ import '../stylesheets/ModalContainer.css';
 const Messages = (props) => {
     return (
         <div className="mSent">
-            <p>{props.message} {props.pic}</p>
+            <p>{props.message}</p><img src={props.pic}/>
         </div>
     );
 }

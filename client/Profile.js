@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import './stylesheets/Profile.css';
+import UpdateProfile from './components/UpdateProfile';
 
 //need to fetch our profile data from the database to fill in our profile
 const Profile = (props) => {
@@ -12,10 +13,12 @@ const Profile = (props) => {
     location: null,
     comment: null,
     proglang: null,
+    url: null,
   });
+  const [showUpdate, setShowUpdate] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/${props.currUser}`)
+    fetch(`/api/users/${props.currUser}`)
       .then((data) => {
         return data.json();
       })
@@ -24,9 +27,11 @@ const Profile = (props) => {
       });
   }, []);
 
-  console.log(profileData);
-
   const { username, age, location, comment, proglang, url } = profileData;
+
+  function update() {
+    setShowUpdate(!showUpdate)
+  }
 
   return (
     <div>
@@ -41,6 +46,8 @@ const Profile = (props) => {
           <p className='userDetail'>Location: {location}</p>
           <p className='userDetail'>Bio: {comment}</p>
           <p className='userDetail'>Programming Language: {proglang}</p>
+          <button className="updateProfile" onClick={update}>Update My Profile</button>
+          {showUpdate ? <UpdateProfile user={profileData} update={setProfileData} hide={setShowUpdate} curr={showUpdate} /> : null}
         </div>
       </div>
     </div>

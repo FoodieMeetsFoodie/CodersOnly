@@ -28,12 +28,24 @@
     width:29.3vw;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 .mSent{
     display: flex;
     align-items: center;
     flex-direction: row;
     align-self: flex-end
+}
+.mSent img{
+    height: 50px;
+    width: 50px;
+    border-radius:30px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+.mSent p{
+    margin-bottom: 5px;
 }
 .mRecieved {
     display: flex;
