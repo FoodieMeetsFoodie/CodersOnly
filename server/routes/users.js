@@ -11,4 +11,8 @@ router.get('/:username', userController.getUser, (req, res) => {
   return res.status(201).json(res.locals.user);
 });
 
+router.put('/:username', userController.updateUser, (req, res) => {
+  return res.status(201).json(res.locals.user);
+})
+
 module.exports = router;
