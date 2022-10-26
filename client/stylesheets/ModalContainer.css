@@ -31,7 +31,7 @@
     padding-left: 10px;
     margin-top: 10px;
     margin-left: 10px;
-    height:4vw;
+    height:3.5vw;
     width:23vw;
     font-size: 25px;
     font-family: 'DejaVu Sans Mono', sans-serif;
@@ -77,4 +77,4 @@
 
 .sendButto:hover .sendButtonSpan {
     background: transparent;
-  }
+}
