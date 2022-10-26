@@ -66,7 +66,6 @@ controller.verifyUser = async (req, res, next) => {
     });
     if (found) {
       res.locals.userExists = true;
-      console.log(res.locals.userExists);
 
       res.cookie('ssid', found._id, {
         httpOnly: true,
@@ -139,11 +138,13 @@ controller.updateUserMatches = async (req, res, next) => {
 controller.isLoggedIn = async (req, res, next) => {
   try {
     const currSession = await Session.findOne({ cookieId: req.cookies.ssid });
-    const { username } = await User.findOne({ _id: req.cookies.ssid });
-
-    currSession
-      ? (res.locals.sessionFound = username)
-      : (res.locals.sessionFound = false);
+    console.log('currSession', currSession);
+    if (currSession) {
+      const { username } = await User.findOne({ _id: req.cookies.ssid });
+      res.locals.sessionFound = username;
+    } else {
+      res.locals.sessionFound = false;
+    }
   } catch {
     next({
       log: 'session controller isloggedin error',
