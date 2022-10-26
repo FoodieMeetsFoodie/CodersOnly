@@ -12,3 +12,21 @@ describe('Route integration', () => {
     });
   });
 });
+
+describe('Feed logic', () => {
+  describe('/api/testuser', () => {
+    describe('GET', () => {
+      it('responds with 200 status', () =>
+        request(server).get('/api/testuser').expect(201));
+    });
+  });
+});
+
+describe('Match logic', () => {
+  describe('/api/testuser/Thundergoose/yes', () => {
+    describe('PATCH', () => {
+      it('responds with 200 status', () =>
+        request(server).patch('/api/testuser/Thundergoose/yes').expect(200));
+    });
+  });
+});
