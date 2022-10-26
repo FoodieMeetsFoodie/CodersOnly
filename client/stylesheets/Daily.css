@@ -1,18 +1,22 @@
+@import url('http://fonts.cdnfonts.com/css/dejavu-sans-mono');
 #daily-container {
   display: flex;
   flex-direction: column;
 }
+#daily {
+  display: grid;
+  grid-template-areas:
+    'prob solu'
+    'prob solu';
+}
 
 #problem {
+  grid-area: 'prob';
   display: flex;
   flex-direction: column;
-  margin: 100px;
+  padding: 50px;
 }
-#prompt-box {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-}
+
 #prompt-text {
   border-style: none;
   background-color: midnightblue;
@@ -35,11 +39,16 @@
   width: 400px;
   padding: 30px;
   margin: 30px;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 #result-box {
+  grid-area: 'solu';
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 30px;
 }
 #run-code {
   max-width: 100px;
@@ -57,14 +66,10 @@
   height: auto;
   border-radius: 20px;
   padding: 5px;
+  font-family: ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
-
-#daily {
-  display: flex;
-  flex-direction: row;
-}
-
-@import url('http://fonts.cdnfonts.com/css/dejavu-sans-mono');
 
 #run-code {
   font-family: 'DejaVu Sans Mono', sans-serif;
