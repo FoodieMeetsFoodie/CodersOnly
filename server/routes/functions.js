@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controller');
+const functionsController = require('../controllers/functionsController.js');
 
-router.get('/friends', controller.getFriends, (req, res) => {
+router.get('/friends', functionsController.getFriends, (req, res) => {
   return res.status(200).json(res.locals.friends);
 });
 
 // Function to set match
 router.patch(
   '/:username/:clickedUser/:decision',
-  controller.updateUserMatches,
+  functionsController.updateUserMatches,
   (req, res) => {
     console.log(res.locals.match);
     return res.status(200).json(res.locals.match);
   }
 );
+
 module.exports = router;
