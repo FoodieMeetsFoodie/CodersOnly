@@ -171,21 +171,21 @@ const DailyProblem = (props) => {
   });
 
   return (
-    <div id='daily-container'>
+    <div id="daily-container">
       <Navbar />
-      <div id='daily'>
-        <div id='problem'>
-          <p id='prompt'></p>
+      <div id="daily">
+        <div id="problem">
+          <p id="prompt"></p>
           <textarea
-            id='prompt-text'
+            id="prompt-text"
             onChange={(e) => setCode(e.target.value)}
           ></textarea>
-          <button id='run-code' onClick={() => setRun(true)}>
+          <button id="run-code" onClick={() => setRun(true)}>
             Run Code
           </button>
         </div>
-        <div id='result-box'>
-          <p id='result'></p>
+        <div id="result-box">
+          <p id="result"></p>
         </div>
       </div>
     </div>
