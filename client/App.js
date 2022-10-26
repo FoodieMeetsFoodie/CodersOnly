@@ -1,12 +1,14 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import Login from './Login.js';
-import SignUp from './SignUp';
-import Profile from './Profile';
-import Feed from './Feed';
 import UpdateProfile from './components/UpdateProfile';
+import Feed from './Feed';
+import Login from './Login.js';
 import Matches from './Matches';
 import useToken from './useToken';
+import Profile from './Profile';
+import SignUp from './SignUp';
+bb575177e428826d343a6b980d42df91ebb7ba
 
 //imported stylesheet
 import './stylesheets/style.css';
@@ -20,6 +22,7 @@ const App = () => {
 
 
   useEffect(() => {
+    const { data } = axios.get('api/messages/dummymessage');
     fetch('/api/friends')
       .then((response) => response.json())
       .then((data) => {

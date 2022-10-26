@@ -1,9 +1,8 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './components/NavBar';
 import FeedItem from './components/FeedItem';
 import MatchPopUp from './components/MatchPopUp';
+import Navbar from './components/NavBar';
 import './stylesheets/Feed.css';
 
 const Feed = (props) => {
@@ -59,8 +58,13 @@ const Feed = (props) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Navbar currUser={props.currUser} setCurrUser={props.setCurrUser} removeToken={props.removeToken}/>
       <div className='feedDiv'>
+=======
+      <Navbar />
+      <div className="feedDiv">
+>>>>>>> 4cbb575177e428826d343a6b980d42df91ebb7ba
         {toggleMatchPopUp && (
           <MatchPopUp
             setToggleMatchPopUp={setToggleMatchPopUp}
@@ -68,7 +72,7 @@ const Feed = (props) => {
           />
         )}
         <FeedItem user={currUserFeed[currIndex]} />
-        <div className='feedBtns'>
+        <div className="feedBtns">
           <button onClick={yesHandler}>Yes</button>
           <button onClick={noHandler}>No</button>
         </div>

@@ -1,8 +1,10 @@
 const User = require('./userModel');
+const bcrypt = require('bcrypt');
 
 const controller = {};
 
 controller.createUser = async (req, res, next) => {
+
   try {
     const {
       username,
@@ -14,11 +16,15 @@ controller.createUser = async (req, res, next) => {
       matches,
       url,
     } = req.body;
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt)
+
     if (typeof username !== 'string')
       throw new Error('username should be a string');
     res.locals.user = await User.create({
       username,
-      password,
+      password: hashedPassword,
       age,
       location,
       proglang,
@@ -76,11 +82,16 @@ controller.getUser = async (req, res, next) => {
 controller.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+
     const found = await User.findOne({
       username: username,
       password: password,
     });
-    found ? (res.locals.userExists = true) : (res.locals.userExists = false);
+
+    let verified = await bcrypt.compare(password, found.password)
+
+    verified ? (res.locals.userExists = true) : (res.locals.userExists = false);
+
     return next();
   } catch (err) {
     return next({
