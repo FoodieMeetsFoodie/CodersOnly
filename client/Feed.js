@@ -58,13 +58,9 @@ const Feed = (props) => {
 
   return (
     <div>
-<<<<<<< HEAD
       <Navbar currUser={props.currUser} setCurrUser={props.setCurrUser} removeToken={props.removeToken}/>
       <div className='feedDiv'>
-=======
-      <Navbar />
-      <div className="feedDiv">
->>>>>>> 4cbb575177e428826d343a6b980d42df91ebb7ba
+
         {toggleMatchPopUp && (
           <MatchPopUp
             setToggleMatchPopUp={setToggleMatchPopUp}
@@ -78,6 +74,7 @@ const Feed = (props) => {
         </div>
       </div>
     </div>
+
   );
 };
 

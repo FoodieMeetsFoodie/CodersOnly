@@ -8,7 +8,6 @@ import Matches from './Matches';
 import useToken from './useToken';
 import Profile from './Profile';
 import SignUp from './SignUp';
-bb575177e428826d343a6b980d42df91ebb7ba
 
 //imported stylesheet
 import './stylesheets/style.css';
@@ -51,7 +50,7 @@ const App = () => {
         element={<Login setCurrUser={setCurrUser} setToken={setToken} currUser={currUser} />}
         />*/}
       <Route
-        path='/'
+        exact path='/'
         element={<Feed setCurrUser={setCurrUser} removeToken={removeToken} currUser={currUser} allUsers={allUsers} />}
       />
       <Route
