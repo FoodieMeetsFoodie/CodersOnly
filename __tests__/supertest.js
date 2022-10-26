@@ -1,7 +1,7 @@
 const app = require('../server/server.js');
 const request = require('supertest');
 
-describe('Create User', () => {
+xdescribe('Create User', () => {
 
     let createUserObject = {
         "username": "Andrew",
@@ -23,12 +23,11 @@ describe('Create User', () => {
 
     xit('returns an error when required fields are not entered correctly', async () => {
 
-
     })  
 
 });
 
-describe('Verify User', () => {
+xdescribe('Verify User', () => {
 
     const verifyUserObj = {
         username: "Andrew",
@@ -54,7 +53,7 @@ describe('Verify User', () => {
 
 });
 
-describe('Get User Profile', () => {
+xdescribe('Get User Profile', () => {
 
     const getUserObj = {
         "username": "Andrew",
@@ -77,7 +76,7 @@ describe('Get User Profile', () => {
 
 });
 
-describe('Update User', () => {
+xdescribe('Update User', () => {
 
     const updateUserObj = {
         "username": "Andrew",
@@ -104,3 +103,11 @@ describe('Update User', () => {
 
 });
 
+describe('Get Friends middleware - this should find all the profiles listed in the database', () => {
+
+    it('should return all the users listed in the database', async() => {
+
+        const res = await request(app).get('api/functions/friends');
+        expect(res).toBeInstanceOf(Array)
+    })
+})
