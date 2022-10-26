@@ -16,7 +16,7 @@ module.exports = {
 };
 
 // TODO: Uncomment this when want to use our own instance.
-mongoose.connect(
-  'mongodb+srv://codersonly:TfJswD1Pp90S6xpZ@cluster0.uxq9qjo.mongodb.net/?retryWrites=true&w=majority',
-  () => console.log('Velociraptor Mongo Connected')
-);
+// mongoose.connect(
+//   'mongodb+srv://codersonly:TfJswD1Pp90S6xpZ@cluster0.uxq9qjo.mongodb.net/?retryWrites=true&w=majority',
+//   () => console.log('Velociraptor Mongo Connected')
+// );
