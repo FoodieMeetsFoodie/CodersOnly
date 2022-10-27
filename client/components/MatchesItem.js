@@ -13,16 +13,16 @@ const MatchesItem = (props) => {
   }
   const { username, age, location, comment, proglang, url } = props.user;
   return (
-    <div className='matchesContainer'>
-      <div className='username'>
-        <h3 id='userName'>{username}</h3>
+    <div className="matchesContainer">
+      <div className="username">
+        <h3 id="userName">{username}</h3>
       </div>
-      <img className='matchesImage' src={url} alt='profileImage' />
-      <p className='userDetail'>Age: {age}</p>
-      <p className='userDetail'>Location: {location}</p>
-      <p className='userDetail'>Bio: {comment}</p>
-      <p className='userDetail'>Programming Language: {proglang}</p>
-      <button className='profile-btn' onClick={() => setButtonPopup(true)}>
+      <img className="matchesImage" src={url} alt="profileImage" />
+      <p className="userDetail">Age: {age}</p>
+      <p className="userDetail">Location: {location}</p>
+      <p className="userDetail">Bio: {comment}</p>
+      <p className="userDetail">Programming Language: {proglang}</p>
+      <button className="profile-btn" onClick={() => setButtonPopup(true)}>
         slideInto{username}DMs()
       </button>
       <CollabBox

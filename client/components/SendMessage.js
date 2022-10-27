@@ -19,20 +19,22 @@ function SendMessage(props) {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setMsg('');
-    
   };
   return (
     <div>
       <form onSubmit={sendMessage}>
         <input
-          classname='msg_input'
+          classname="msg_input"
           value={blank}
           onChange={(e) => {
-            let newText = e.target.value.replace(/\bshit|fuck|bitch|create +react +app| hate +javascript|hate +codesmith\b/gi, " 🧐🧐🧐🧐");
+            let newText = e.target.value.replace(
+              /\bshit|fuck|bitch|create +react +app| hate +javascript|hate +codesmith\b/gi,
+              ' 🧐🧐🧐🧐'
+            );
             setMsg(newText);
-            setBlank(e.target.value)}}
-            
-          placeholder='...type your message'
+            setBlank(e.target.value);
+          }}
+          placeholder="...type your message"
         ></input>
         <button className="msg-btn" type="submit">
           Send
