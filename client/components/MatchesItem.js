@@ -17,7 +17,7 @@ const MatchesItem = (props) => {
       <p className='userDetail'>Location: {location}</p>
       <p className='userDetail'>Bio: {comment}</p>
       <p className='userDetail'>Programming Language: {proglang}</p>
-      <button>slideInto{username}DMs()</button>
+      <button onClick={() => props.slideDms(username)}>slideInto{username}DMs()</button>
     </div>
   );
 };

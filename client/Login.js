@@ -8,6 +8,7 @@ const Login = (props) => {
   //is this state used?
   const [toggleSignUp, setToggleSignUp] = useState(false);
 
+
   const loginHandler = () => {
     const id = document.getElementById('loginUsername').value;
     const pw = document.getElementById('password').value;
@@ -34,33 +35,33 @@ const Login = (props) => {
     return <SignUp setToggleSignUp={setToggleSignUp} />;
   }
   return (
-    <div className='LoginInDiv'>
-      <div className='LoginBox'>
-        <div className='LoginTitle'>
-          <img className='loginImage' src={Mole} alt='starmole' />
-          <h1 className='title'>CodersOnly</h1>
+    <div className="LoginInDiv">
+      <div className="LoginBox">
+        <div className="LoginTitle">
+          <img className="loginImage" src={Mole} alt="starmole" />
+          <h1 className="title">CodersOnly</h1>
         </div>
         <input
-          className='id'
-          name='username'
-          type='text'
-          placeholder='Username'
-          id='loginUsername'
+          className="id"
+          name="username"
+          type="text"
+          placeholder="Username"
+          id="loginUsername"
         ></input>
         <input
-          className='password'
-          name='password'
-          type='password'
-          placeholder='Password'
-          id='password'
+          className="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+          id="password"
         ></input>
-        <div className='LoginScreenButtons'>
-          <button className='loginButtons' onClick={loginHandler}>
+        <div className="LoginScreenButtons">
+          <button className="loginButtons" onClick={loginHandler}>
             Login
           </button>
-          {props.currUser && <Navigate to='/feed' />}
+          {props.currUser && <Navigate to="/feed" />}
           <button
-            className='loginButtons'
+            className="loginButtons"
             onClick={() => setToggleSignUp(!toggleSignUp)}
           >
             Sign Up
