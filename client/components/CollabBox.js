@@ -28,12 +28,17 @@ const CollabBox = (props) => {
   return props.trigger ? (
     <section className='collab-box-container'>
       <div className='chat-box'>
-        <button
-          className='close-btn'
-          onClick={() => props.setButtonPopup(false)}
-        >
-          X
-        </button>
+        <div className='chatTitle'>
+          <h1>
+            Chat with your Match and work on some practice problems together
+          </h1>
+          <button
+            className='close-btn'
+            onClick={() => props.setButtonPopup(false)}
+          >
+            X
+          </button>
+        </div>
         <div className='chat-container'>
           <Prompts />
           <div className='msgAndCoding'>

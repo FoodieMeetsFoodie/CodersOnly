@@ -63,7 +63,7 @@ const Prompts = (props) => {
 
   return (
     <div id="DMprompt">
-      <h1>Chat with your Match and work on some practice problems together</h1>
+      
       <h2>Prompt:</h2>
       <p>{currentPrompt}</p>
       <button
