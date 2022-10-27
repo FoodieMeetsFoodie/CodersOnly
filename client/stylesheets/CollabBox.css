@@ -20,7 +20,7 @@
   gap: 20px;
   margin-top: 50px;
   background-color: rgb(251, 247, 242);
-  max-width: 1500px;
+  max-width: 1900px;
   padding: 50px;
   margin-right: auto;
   margin-left: auto;
@@ -107,7 +107,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   margin-bottom: 20px;
-  margin-left: 1400px;
+  margin-left: 1850px;
 }
 
 .close-btn:focus {
@@ -138,4 +138,14 @@
   flex-direction: column;
   gap: 20px;
   max-width: 100%;
+}
+
+.msgAndCoding {
+  display: flex;
+  gap: 10px;
+}
+
+.chatAndMsg {
+  display: flex;
+  flex-direction: column;
 }

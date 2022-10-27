@@ -4,7 +4,7 @@ import '../stylesheets/ChatFire.css';
 
 const Chat = (props) => {
   return (
-    <div className="fire-chat">
+    <div className='fire-chat'>
       {props.messages.map(({ id, text, createdAt }) => {
         return (
           <div key={createdAt}>

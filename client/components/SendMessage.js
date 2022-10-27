@@ -24,7 +24,7 @@ function SendMessage(props) {
     <div>
       <form onSubmit={sendMessage}>
         <input
-          classname="msg_input"
+          className='msg_input'
           value={blank}
           onChange={(e) => {
             let newText = e.target.value.replace(
@@ -34,9 +34,9 @@ function SendMessage(props) {
             setMsg(newText);
             setBlank(e.target.value);
           }}
-          placeholder="...type your message"
+          placeholder='...type your message'
         ></input>
-        <button className="msg-btn" type="submit">
+        <button className='msg-btn' type='submit'>
           Send
         </button>
       </form>

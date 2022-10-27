@@ -18,33 +18,38 @@ const CollabBox = (props) => {
   useEffect(() => {
     console.log('hi');
     db.collection(`${collectionName}`)
-      .orderBy('createdAt')
+      .orderBy('createdAt', 'desc')
+      .limit(8)
       .onSnapshot((snapshot) => {
         setMessages(snapshot.docs.map((doc) => doc.data()));
       });
   }, []);
 
   return props.trigger ? (
-    <section className="collab-box-container">
-      <div className="chat-box">
+    <section className='collab-box-container'>
+      <div className='chat-box'>
         <button
-          className="close-btn"
+          className='close-btn'
           onClick={() => props.setButtonPopup(false)}
         >
           X
         </button>
-        <div className="chat-container">
+        <div className='chat-container'>
           <Prompts />
-          <CodingCollab />
-          <Chat
-            currUser={props.currUser}
-            friend={props.friend}
-            messages={messages}
-          />
-          <SendMessage
-            currUser={props.currUser}
-            collectionName={collectionName}
-          />
+          <div className='msgAndCoding'>
+            <CodingCollab />
+            <div className='chatAndMsg'>
+              <Chat
+                currUser={props.currUser}
+                friend={props.friend}
+                messages={messages}
+              />
+              <SendMessage
+                currUser={props.currUser}
+                collectionName={collectionName}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
